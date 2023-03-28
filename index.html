@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Proby</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div style="text-align: center; display: block">
+      <h1>Generator postaci do ED</h1>
+    </div>
+    <div class="wraper">
+      <div class="row_main_margin">
+        <main>
+          <form id="form1">
+            <div>
+              <label for="dysc"><h3>Dyscyplina</h3></label>
+              <label for="Imie_gracza">Imię gracza</label><br />
+              <input
+                type="text"
+                id="Imie_gracza"
+                style="margin-bottom: 5px"
+              /><br />
+            </div>
+            <div>
+              <label for="Imie_postaci">Imię postaci</label><br />
+              <input
+                type="text"
+                id="Imie_postaci"
+                style="margin-bottom: 5px"
+              /><br />
+            </div>
+            <input
+              type="radio"
+              id="Czarodziej"
+              name="dyscyplina"
+              value="Czarodziej"
+              onchange="showDescription()"
+            />
+            <label for="Czarodziej">Czarodziej</label><br />
+            <input
+              type="radio"
+              id="Fechmistrz"
+              name="dyscyplina"
+              value="Fechmistrz"
+              onchange="showDescription()"
+            />
+            <label for="Fechmistrz">Fechmistrz</label><br />
+            <input
+              type="radio"
+              id="Iluzjonista"
+              name="dyscyplina"
+              value="Iluzjonista"
+              onclick="showDescription()"
+            />
+            <label for="Iluzjonista">Iluzjonista</label><br />
+            <input
+              type="radio"
+              id="Kawalerzysta"
+              name="dyscyplina"
+              value="Kawalerzysta"
+              onclick="showDescription()"
+            />
+            <label for="Kawalerzysta">Kawalerzysta</label><br />
+            <input
+              type="radio"
+              id="Powietrzny Łupieżca"
+              name="dyscyplina"
+              value="Powietrzny Łupieżca"
+              onclick="showDescription()"
+            />
+            <label for="Powietrzny Łupieżca">Powietrzny Łupieżca</label><br />
+            <input
+              type="radio"
+              id="Trubadur"
+              name="dyscyplina"
+              value="Trubadur"
+              onclick="showDescription()"
+            />
+            <label for="Trubadur">Trubadur</label><br />
+            <input
+              type="radio"
+              id="Władca Zwierząt"
+              name="dyscyplina"
+              value="Władca Zwierząt"
+              onclick="showDescription()"
+            />
+            <label for="Władca Zwierząt">Władca Zwierząt</label><br />
+            <input
+              type="radio"
+              id="Wojownik"
+              name="dyscyplina"
+              value="Wojownik"
+              onclick="showDescription()"
+            />
+            <label for="Wojownik">Wojownik</label><br />
+            <input
+              type="radio"
+              id="Ksenomanta"
+              name="dyscyplina"
+              value="Ksenomanta"
+              onclick="showDescription()"
+            />
+            <label for="Ksenomanta">Ksenomanta</label><br />
+            <input
+              type="radio"
+              id="Łucznik"
+              name="dyscyplina"
+              value="Łucznik"
+              onclick="showDescription()"
+            />
+            <label for="Łucznik">Łucznik</label><br />
+            <input
+              type="radio"
+              id="Mistrz Żywiołów"
+              name="dyscyplina"
+              value="Mistrz Żywiołów"
+              onclick="showDescription()"
+            />
+            <label for="Mistrz Żywiołów">Mistrz Żywiołów</label><br />
+            <input
+              type="radio"
+              id="Zbrojmistrz"
+              name="dyscyplina"
+              value="Zbrojmistrz"
+              onclick="showDescription()"
+            />
+            <label for="Zbrojmistrz">Zbrojmistrz</label><br />
+            <input
+              type="radio"
+              id="Złodziej"
+              name="dyscyplina"
+              value="Złodziej"
+              onclick="showDescription()"
+            />
+
+            <label for="Złodziej">Złodziej</label>
+
+            <br />
+            <button
+              id="Dysc_submit"
+              type="submit"
+              style="margin-top: 5px"
+              onclick="dyscyplinaSelected()"
+            >
+              Wybrano
+            </button>
+          </form>
+          <div id="Proba"></div>
+        </main>
+      </div>
+
+      <div class="row_aside1_margin" id="Aside1"><aside></aside></div>
+      <div class="row_aside2_margin" id="Aside2"><aside></aside></div>
+    </div>
+
+    <script src="mymodule.js"></script>
+  </body>
+</html>

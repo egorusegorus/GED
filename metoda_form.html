@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>metoda form</title>
+  </head>
+  <body>
+    <form id="form3a">
+      <div id="naglowek_Punkty" class="margines_Dolny_naglowek_Punkty">
+        <h3>
+          <label for="punkty_Do_rozdania">Punkty do rozdania: </label>
+          <label id="punkty_Do_rozdania">66</label>
+        </h3>
+      </div>
+
+      <div class="marginesy_Dla_etykiety_Wartosc_cechy">
+        <b
+          ><label for="input_SF"
+            >Wartość &nbsp;&nbsp;&nbsp;Stopień &nbsp;&nbsp;&nbsp;Kostki <br />
+            cechy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cechy
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; akcji</label
+          >
+        </b>
+      </div>
+
+      <div class="margines_Dolny_label_SF">
+        <label for="input_SF">Siła fizyczna</label>
+      </div>
+
+      <div class="margines_wewnetrzyn_dla_input_number">
+        <input
+          type="number"
+          id="input_SF"
+          class="input_Text_wrap"
+          min="2"
+          value="5"
+          max="18"
+          onclick="zmiana_Wartosci()"
+        />
+        <label for="input_SF" style="padding-left: 27px" id="st_SF">0</label>
+        <label for="input_SF" style="padding-left: 60px" id="k_SF">K0</label>
+      </div>
+
+      <div class="margines_Dolny_label_SF">
+        <label for="input_SF">Zręczność</label>
+      </div>
+
+      <div class="margines_wewnetrzyn_dla_input_number">
+        <input
+          type="number"
+          id="input_ZR"
+          class="input_Text_wrap"
+          min="2"
+          value="5"
+          max="18"
+          onclick="zmiana_Wartosci()"
+        />
+        <label for="input_ZR" style="padding-left: 27px" id="st_ZR">0</label>
+        <label for="input_ZR" style="padding-left: 60px" id="k_ZR">K0</label>
+      </div>
+      <div class="margines_Dolny_label_SF">
+        <label for="input_ZYW">Żywotność</label>
+      </div>
+
+      <div class="margines_wewnetrzyn_dla_input_number">
+        <input
+          type="number"
+          id="input_ZYW"
+          class="input_Text_wrap"
+          min="2"
+          value="5"
+          max="18"
+          onclick="zmiana_Wartosci()"
+        />
+        <label for="input_SF" style="padding-left: 27px" id="st_ZYW">0</label>
+        <label for="input_SF" style="padding-left: 60px" id="k_ZYW">K0</label>
+      </div>
+
+      <div class="margines_Dolny_label_SF">
+        <label for="input_PER">Percepcja</label>
+      </div>
+
+      <div class="margines_wewnetrzyn_dla_input_number">
+        <input
+          type="number"
+          id="input_PER"
+          class="input_Text_wrap"
+          min="2"
+          value="5"
+          max="18"
+          onclick="zmiana_Wartosci()"
+        />
+        <label for="input_PER" style="padding-left: 27px" id="st_PER">0</label>
+        <label for="input_PER" style="padding-left: 60px" id="k_PER">K0</label>
+      </div>
+      <div class="margines_Dolny_label_SF">
+        <label for="input_SW">Siła woli</label>
+      </div>
+
+      <div class="margines_wewnetrzyn_dla_input_number">
+        <input
+          type="number"
+          id="input_SW"
+          class="input_Text_wrap"
+          min="2"
+          value="5"
+          max="18"
+          onclick="zmiana_Wartosci()"
+        />
+        <label for="input_SW" style="padding-left: 27px" id="st_SW">0</label>
+        <label for="input_SW" style="padding-left: 60px" id="k_SW">K0</label>
+      </div>
+      <div class="margines_Dolny_label_SF">
+        <label for="input_CHAR">Charyzma</label>
+      </div>
+
+      <div class="margines_wewnetrzyn_dla_input_number">
+        <input
+          type="number"
+          id="input_CHAR"
+          class="input_Text_wrap"
+          min="2"
+          value="5"
+          max="18"
+          onclick="zmiana_Wartosci()"
+        />
+        <label for="input_CHAR" style="padding-left: 27px" id="st_CHAR"
+          >0</label
+        >
+        <label for="input_CHAR" style="padding-left: 60px" id="k_CHAR">K0</label
+        ><br />
+        <br />
+        <button
+          type="button"
+          id="modyfikator_rasowy"
+          onclick="mod_Wartosci_od_Rasy()"
+        >
+          Dodaj modyfikator rasowy
+        </button>
+      </div>
+    </form>
+    <script src="mymodule.js"></script>
+  </body>
+</html>

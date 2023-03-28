@@ -1,0 +1,39 @@
+body {
+  font-family: "Roboto Slab", serif;
+}
+.wraper {
+  display: flex;
+  flex-direction: row;
+  width: 1200px;
+  justify-content: left;
+  margin: 0 auto;
+}
+.row_margin {
+  margin: 0px 0px 0px 0px;
+  width: 400px;
+}
+
+.row_main_margin {
+  margin: 0px 0px 0px 0px;
+  width: 200px;
+}
+
+.row_aside1_margin {
+  margin: 0px 0px 0px 0px;
+  width: 800px;
+}
+.row_aside2_margin {
+  margin-left: 20px;
+  width: 200px;
+}
+
+.margines_Dolny_label_SF {
+  margin-bottom: 5px;
+}
+
+.input_Text_wrap {
+  width: 40px;
+}
+.marginesy_Dla_etykiety_Wartosc_cechy {
+  margin-bottom: 10px;
+}
