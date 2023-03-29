@@ -436,39 +436,18 @@ function mod_Wartosci_od_Rasy() {
 }
 
 function zmiana_Wartosci() {
-  /* var punkty = parseInt(document.getElementById("punkty_Do_rozdania"));
-  var ZR,SF,ZYW,PER,SW,CHAR;
-  ZR= parseInt(document.getElementById("input_ZR"));
-  SF= parseInt(document.getElementById("input_SF"));
-  ZYW= parseInt(document.getElementById("input_ZYW"));
-  PER= parseInt(document.getElementById("input_PER"));
-  SW= parseInt(document.getElementById("input_SW"));
-  CHAR= parseInt(document.getElementById("input_CHAR"));
-*/
-  var punkty = parseInt(document.getElementById("punkty_Do_rozdania"));
-  var klikany_input = document.querySelectorAll("input[type='number']");
-
-  var cecha = parseInt(document.getElementById("klikany_input"));
-  var koszt = 0;
-
+  const koszty = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16, 19, 21, 23];
+  var punkty = parseInt(
+    document.getElementById("punkty_Do_rozdania").textContent
+  );
+}
+/*
+const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
   inputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      // wyświetlenie id pola input, które zostało zmienione
-      klikany_input = event.target.id;
+    input.addEventListener("click", function (event) {
+      nazwa_kliknietego_inputa=  event.target.id;
+      
     });
   });
-
-  if (cecha >= 2 && cecha <= 7) {
-    koszt = cecha - 2;
-  } else if (cecha >= 8 && cecha <= 11) {
-    koszt = cecha - 6;
-  } else if (cecha >= 12 && cecha <= 13) {
-    koszt = cecha - 4;
-  } else if (cecha >= 14 && cecha <= 16) {
-    koszt = cecha - 2;
-  } else if (cecha >= 17 && cecha <= 18) {
-    koszt = cecha - 1;
-  }
-  punkty = punkty - koszt;
-  document.getElementById("punkty_Do_rozdania").innerHTML = punkty;
-}
+   */
