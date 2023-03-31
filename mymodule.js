@@ -1,4 +1,5 @@
 const postac = [];
+var punkty_cechy = 66;
 function showDescription() {
   var radios = document.getElementsByName("dyscyplina");
   var value;
@@ -436,39 +437,216 @@ function mod_Wartosci_od_Rasy() {
 }
 
 function zmiana_Wartosci() {
-  /* var punkty = parseInt(document.getElementById("punkty_Do_rozdania"));
-  var ZR,SF,ZYW,PER,SW,CHAR;
-  ZR= parseInt(document.getElementById("input_ZR"));
-  SF= parseInt(document.getElementById("input_SF"));
-  ZYW= parseInt(document.getElementById("input_ZYW"));
-  PER= parseInt(document.getElementById("input_PER"));
-  SW= parseInt(document.getElementById("input_SW"));
-  CHAR= parseInt(document.getElementById("input_CHAR"));
-*/
-  var punkty = parseInt(document.getElementById("punkty_Do_rozdania"));
-  var klikany_input = document.querySelectorAll("input[type='number']");
+  const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  var wartosc_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      var punkty = parseInt(
+        document.getElementById("punkty_Do_rozdania").textContent
+      );
+      nazwa_kliknietego_inputa = event.target.id;
+      wartosc_kliknietego_inputa = document.getElementById(
+        nazwa_kliknietego_inputa
+      ).value;
+      document.getElementById("punkty_Do_rozdania").textContent =
+        punkty - jaki_koszt(wartosc_kliknietego_inputa);
+    });
+  });
+  // punkty = punkty - jaki_koszt(wartosc_kliknietego_inputa);
+}
 
-  var cecha = parseInt(document.getElementById("klikany_input"));
-  var koszt = 0;
+function jaki_koszt(wartosc_spiner) {
+  const koszty = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16, 19, 21, 23];
+  var koszt;
+  if (wartosc_spiner == 2) {
+    koszt = koszty[0];
+  } else if (wartosc_spiner == 3) {
+    koszt = koszty[1];
+  } else if (wartosc_spiner == 4) {
+    koszt = koszty[2];
+  } else if (wartosc_spiner == 5) {
+    koszt = koszty[3];
+  } else if (wartosc_spiner == 6) {
+    koszt = koszty[4];
+  } else if (wartosc_spiner == 7) {
+    koszt = koszty[5];
+  } else if (wartosc_spiner == 8) {
+    koszt = koszty[6];
+  } else if (wartosc_spiner == 9) {
+    koszt = koszty[7];
+  } else if (wartosc_spiner == 10) {
+    koszt = koszty[8];
+  } else if (wartosc_spiner == 11) {
+    koszt = koszty[9];
+  } else if (wartosc_spiner == 12) {
+    koszt = koszty[10];
+  } else if (wartosc_spiner == 13) {
+    koszt = koszty[11];
+  } else if (wartosc_spiner == 14) {
+    koszt = koszty[12];
+  } else if (wartosc_spiner == 15) {
+    koszt = koszty[13];
+  } else if (wartosc_spiner == 16) {
+    koszt = koszty[14];
+  } else if (wartosc_spiner == 17) {
+    koszt = koszty[15];
+  } else if (wartosc_spiner == 18) {
+    koszt = koszty[16];
+  } else {
+    koszt = 0;
+  }
+  return koszt;
+}
+
+/*function zmiana_Wartosci() {
+
+  const koszty = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16, 19, 21, 23];
+  const inputs = document.querySelectorAll("input[type='number']");
+  let punkty = parseInt(
+    document.getElementById("punkty_Do_rozdania").textContent
+  );
+  let wartosc_kliknietego_inputa;
+  let nazwa_kliknietego_inputa;
 
   inputs.forEach(function (input) {
     input.addEventListener("change", function (event) {
-      // wyświetlenie id pola input, które zostało zmienione
-      klikany_input = event.target.id;
+      nazwa_kliknietego_inputa = event.target.id;
+      wartosc_kliknietego_inputa = parseInt(
+        document.getElementById(nazwa_kliknietego_inputa).value
+      );
+
+      let koszt_cechy = 0;
+      for (let i = 0; i < wartosc_kliknietego_inputa - 2; i++) {
+        koszt_cechy += koszty[i];
+      }
+
+      if (koszt_cechy <= punkty) {
+        punkty -= koszt_cechy;
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else {
+        document.getElementById(nazwa_kliknietego_inputa).value =
+          parseInt(wartosc_kliknietego_inputa) - 1;
+      }
     });
   });
-
-  if (cecha >= 2 && cecha <= 7) {
-    koszt = cecha - 2;
-  } else if (cecha >= 8 && cecha <= 11) {
-    koszt = cecha - 6;
-  } else if (cecha >= 12 && cecha <= 13) {
-    koszt = cecha - 4;
-  } else if (cecha >= 14 && cecha <= 16) {
-    koszt = cecha - 2;
-  } else if (cecha >= 17 && cecha <= 18) {
-    koszt = cecha - 1;
-  }
-  punkty = punkty - koszt;
-  document.getElementById("punkty_Do_rozdania").innerHTML = punkty;
 }
+*/
+/*function zmiana_Wartosci() {
+  const koszty = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16, 19, 21, 23];
+  var koszt_cechy;
+  const inputs = document.querySelectorAll("input[type='number']");
+  var wartosc_kliknietego_inputa;
+  var punkty = parseInt(
+    document.getElementById("punkty_Do_rozdania").textContent
+  );
+  var nazwa_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("click", function (event) {
+      nazwa_kliknietego_inputa = event.target.id;
+
+      wartosc_kliknietego_inputa = document.getElementById(
+        nazwa_kliknietego_inputa
+      ).value;
+
+      if (wartosc_kliknietego_inputa == 2) {
+        //const suma = koszty.slice(0, 0).reduce((acc, curr) => acc + curr, 0);
+        // punkty = suma - koszty[0];
+        koszt_cechy = koszty[0];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 3) {
+        //const suma = koszty.slice(0, 1).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[1];
+        koszt_cechy = koszty[1];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 4) {
+        //const suma = koszty.slice(0, 2).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[2];
+        koszt_cechy = koszty[2];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 5) {
+        // const suma = koszty.slice(3).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[3];
+        koszt_cechy = koszty[3];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 6) {
+        //const suma = koszty.slice(0, 4).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[4];
+        koszt_cechy = koszty[4];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 7) {
+        //const suma = koszty.slice(0, 5).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[5];
+        koszt_cechy = koszty[5];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 8) {
+        //const suma = koszty.slice(0, 4).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[4];
+        koszt_cechy = koszty[6];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 9) {
+        //const suma = koszty.slice(0, 5).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[5];
+        koszt_cechy = koszty[7];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 10) {
+        //const suma = koszty.slice(0, 6).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[6];
+        koszt_cechy = koszty[8];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 11) {
+        //const suma = koszty.slice(0, 7).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[7];
+        koszt_cechy = koszty[9];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 12) {
+        //const suma = koszty.slice(0, 8).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[8];
+        koszt_cechy = koszty[10];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 13) {
+        //const suma = koszty.slice(0, 9).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[9];
+        koszt_cechy = koszty[11];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 14) {
+        //const suma = koszty.slice(0, 10).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[10];
+        koszt_cechy = koszty[12];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 15) {
+        //const suma = koszty.slice(0, 11).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[11];
+        koszt_cechy = koszty[13];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 16) {
+        //const suma = koszty.slice(0, 12).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[12];
+        koszt_cechy = koszty[14];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 17) {
+        //const suma = koszty.slice(0, 13).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[13];
+        koszt_cechy = koszty[15];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      } else if (wartosc_kliknietego_inputa == 18) {
+        //const suma = koszty.slice(0, 14).reduce((acc, curr) => acc + curr, 0);
+        //punkty = suma - koszty[14];
+        koszt_cechy = koszty[16];
+        document.getElementById("punkty_Do_rozdania").textContent = punkty;
+      }
+      punkty_cechy = punkty_cechy - koszt_cechy;
+      document.getElementById("punkty_Do_rozdania").textContent = punkty_cechy;
+    });
+  });
+}*/
+/*
+const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("click", function (event) {
+      nazwa_kliknietego_inputa=  event.target.id;
+      
+    });
+  });
+   */
