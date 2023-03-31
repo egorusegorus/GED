@@ -1,4 +1,5 @@
 const postac = [];
+var punkty_cechy = 66;
 function showDescription() {
   var radios = document.getElementsByName("dyscyplina");
   var value;
@@ -436,39 +437,68 @@ function mod_Wartosci_od_Rasy() {
 }
 
 function zmiana_Wartosci() {
-  /* var punkty = parseInt(document.getElementById("punkty_Do_rozdania"));
-  var ZR,SF,ZYW,PER,SW,CHAR;
-  ZR= parseInt(document.getElementById("input_ZR"));
-  SF= parseInt(document.getElementById("input_SF"));
-  ZYW= parseInt(document.getElementById("input_ZYW"));
-  PER= parseInt(document.getElementById("input_PER"));
-  SW= parseInt(document.getElementById("input_SW"));
-  CHAR= parseInt(document.getElementById("input_CHAR"));
-*/
-  var punkty = parseInt(document.getElementById("punkty_Do_rozdania"));
-  var klikany_input = document.querySelectorAll("input[type='number']");
-
-  var cecha = parseInt(document.getElementById("klikany_input"));
-  var koszt = 0;
-
+  const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  var wartosc_kliknietego_inputa;
   inputs.forEach(function (input) {
     input.addEventListener("change", function (event) {
-      // wyświetlenie id pola input, które zostało zmienione
-      klikany_input = event.target.id;
+      nazwa_kliknietego_inputa = event.target.id;
+      wartosc_kliknietego_inputa = document.getElementById(
+        nazwa_kliknietego_inputa
+      ).value;
+
+      var punkty = parseInt(
+        document.getElementById("punkty_Do_rozdania").textContent
+      );
+      document.getElementById("punkty_Do_rozdania").textContent =
+        punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
+      punkty = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
     });
   });
+  punkty_cechy = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
+  document.getElementById("Aside1").innerHTML = punkty_cechy;
+  // punkty = punkty - jaki_koszt(wartosc_kliknietego_inputa);
+}
 
-  if (cecha >= 2 && cecha <= 7) {
-    koszt = cecha - 2;
-  } else if (cecha >= 8 && cecha <= 11) {
-    koszt = cecha - 6;
-  } else if (cecha >= 12 && cecha <= 13) {
-    koszt = cecha - 4;
-  } else if (cecha >= 14 && cecha <= 16) {
-    koszt = cecha - 2;
-  } else if (cecha >= 17 && cecha <= 18) {
-    koszt = cecha - 1;
+function jaki_koszt(wartosc_spiner) {
+  const koszty = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 8, 10, 13, 16, 19, 21, 23];
+  var koszt;
+  if (wartosc_spiner == 2) {
+    koszt = koszty[0];
+  } else if (wartosc_spiner == 3) {
+    koszt = koszty[1];
+  } else if (wartosc_spiner == 4) {
+    koszt = koszty[2];
+  } else if (wartosc_spiner == 5) {
+    koszt = koszty[3];
+  } else if (wartosc_spiner == 6) {
+    koszt = koszty[4];
+  } else if (wartosc_spiner == 7) {
+    koszt = koszty[5];
+  } else if (wartosc_spiner == 8) {
+    koszt = koszty[6];
+  } else if (wartosc_spiner == 9) {
+    koszt = koszty[7];
+  } else if (wartosc_spiner == 10) {
+    koszt = koszty[8];
+  } else if (wartosc_spiner == 11) {
+    koszt = koszty[9];
+  } else if (wartosc_spiner == 12) {
+    koszt = koszty[10];
+  } else if (wartosc_spiner == 13) {
+    koszt = koszty[11];
+  } else if (wartosc_spiner == 14) {
+    koszt = koszty[12];
+  } else if (wartosc_spiner == 15) {
+    koszt = koszty[13];
+  } else if (wartosc_spiner == 16) {
+    koszt = koszty[14];
+  } else if (wartosc_spiner == 17) {
+    koszt = koszty[15];
+  } else if (wartosc_spiner == 18) {
+    koszt = koszty[16];
+  } else {
+    koszt = 0;
   }
-  punkty = punkty - koszt;
-  document.getElementById("punkty_Do_rozdania").innerHTML = punkty;
+  return koszt;
 }
