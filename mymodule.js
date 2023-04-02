@@ -1,4 +1,13 @@
-const postac = [];
+const postac = []; //postac[0] = imie gracza
+//postac[1] = imie postaci
+//postac[2] = Dyscyplina
+//postac[3] = Rasa
+//postac[4] = SF
+//postac[5] = ZR
+//postac[6] = ZYW
+//postac[7] = PER
+//postac[8] = SW
+//postac[9] = CHAR
 var punkty_cechy = 66;
 function showDescription() {
   var radios = document.getElementsByName("dyscyplina");
@@ -437,27 +446,32 @@ function mod_Wartosci_od_Rasy() {
 }
 
 function zmiana_Wartosci() {
-  const inputs = document.querySelectorAll("input[type='number']");
-  var nazwa_kliknietego_inputa;
-  var wartosc_kliknietego_inputa;
-  inputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      nazwa_kliknietego_inputa = event.target.id;
-      wartosc_kliknietego_inputa = document.getElementById(
-        nazwa_kliknietego_inputa
-      ).value;
+  suma_kosztow_wszystkich_cech();
+}
 
-      var punkty = parseInt(
-        document.getElementById("punkty_Do_rozdania").textContent
-      );
-      document.getElementById("punkty_Do_rozdania").textContent =
-        punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
-      punkty = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
-    });
-  });
-  punkty_cechy = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
-  document.getElementById("Aside1").innerHTML = punkty_cechy;
-  // punkty = punkty - jaki_koszt(wartosc_kliknietego_inputa);
+function suma_kosztow_wszystkich_cech() {
+  var koszty_cech_w_tablicy = [0, 0, 0, 0, 0, 0];
+  var wartosc_spiner;
+  wartosc_spiner = document.getElementById("input_SF").value;
+  koszty_cech_w_tablicy[0] = jaki_koszt(wartosc_spiner);
+  wartosc_spiner = document.getElementById("input_ZR").value;
+  koszty_cech_w_tablicy[1] = jaki_koszt(wartosc_spiner);
+  wartosc_spiner = document.getElementById("input_ZYW").value;
+  koszty_cech_w_tablicy[2] = jaki_koszt(wartosc_spiner);
+  wartosc_spiner = document.getElementById("input_PER").value;
+  koszty_cech_w_tablicy[3] = jaki_koszt(wartosc_spiner);
+  wartosc_spiner = document.getElementById("input_SW").value;
+  koszty_cech_w_tablicy[4] = jaki_koszt(wartosc_spiner);
+  wartosc_spiner = document.getElementById("input_CHAR").value;
+  koszty_cech_w_tablicy[5] = jaki_koszt(wartosc_spiner);
+
+  document.getElementById("Aside1").innerHTML = // tymczasowe rozwiazanie
+    koszty_cech_w_tablicy[0] + // rownie dobrze mozna
+    koszty_cech_w_tablicy[1] + // cala sume z tablicy
+    koszty_cech_w_tablicy[2] + // wrzucic w wartosc_spiner
+    koszty_cech_w_tablicy[3] + // a pozniej ja wzrocic
+    koszty_cech_w_tablicy[4] +
+    koszty_cech_w_tablicy[5];
 }
 
 function jaki_koszt(wartosc_spiner) {
@@ -502,3 +516,56 @@ function jaki_koszt(wartosc_spiner) {
   }
   return koszt;
 }
+/*
+function zmiana_Wartosci() {
+  const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  var wartosc_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      nazwa_kliknietego_inputa = event.target.id;
+      wartosc_kliknietego_inputa = document.getElementById(
+        nazwa_kliknietego_inputa
+      ).value;
+
+      var punkty = parseInt(
+        document.getElementById("punkty_Do_rozdania").textContent
+      );
+      document.getElementById("punkty_Do_rozdania").textContent =
+        punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
+      punkty = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
+    });
+  });
+  punkty_cechy = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
+  document.getElementById("Aside1").innerHTML = punkty_cechy;
+  // punkty = punkty - jaki_koszt(wartosc_kliknietego_inputa);
+}
+*/
+/*function ktory_spinner_zostal_zmieniony() {
+  const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      nazwa_kliknietego_inputa = event.target.id;
+      var wartosc_kliknietego_inputa = document.getElementById(
+        nazwa_kliknietego_inputa
+      ).value;
+      document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
+    });
+  });
+}
+function wartosc_zmienionego_inputa() {
+  const inputs = document.querySelectorAll("input[type='number']");
+  var wartosc_kliknietego_inputa;
+  var nazwa_kliknietego_inputa = ktory_spinner_zostal_zmieniony();
+  inputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      wartosc_kliknietego_inputa = document.getElementById(
+        nazwa_kliknietego_inputa
+      ).value;
+      document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
+    });
+  });
+  document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
+}
+*/
