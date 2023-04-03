@@ -8,6 +8,7 @@ const postac = []; //postac[0] = imie gracza
 //postac[7] = PER
 //postac[8] = SW
 //postac[9] = CHAR
+
 var punkty_cechy = 66;
 function showDescription() {
   var radios = document.getElementsByName("dyscyplina");
@@ -335,8 +336,37 @@ function radio_Value() {
       .then((response) => response.text())
       .then((data) => {
         document.querySelector("main").innerHTML = data;
+        max_I_min_Dla_cech_wedlug_Ras();
+      });
+    fetch("rasy.html")
+      .then((response) => response.text())
+      .then((data) => {
+        var value;
+        if (postac[3] === "Człowiek") {
+          value = "Człowiek_mod";
+        } else if (postac[3] === "Elf") {
+          value = "Elf_mod";
+        } else if (postac[3] === "Krasnolud") {
+          value = "Krasnolud_mod";
+        } else if (postac[3] === "Obsydianin") {
+          value = "Obsydianin_mod";
+        } else if (postac[3] === "Ork") {
+          value = "Ork_mod";
+        } else if (postac[3] === "T'skrang") {
+          value = "T'skrang_mod";
+        } else if (postac[3] === "Troll") {
+          value = "Troll_mod";
+        } else if (postac[3] === "Wietrzniak") {
+          value = "Wietrzniak_mod";
+        }
+        const parser = new DOMParser();
+        const htmlDocument = parser.parseFromString(data, "text/html");
+        const tekstZPliku = htmlDocument.getElementById(value).innerHTML;
+
+        document.getElementById("Aside2").innerHTML = tekstZPliku;
       });
   } else {
+    // tutaj formularz metoda losowa
   }
 }
 
@@ -443,10 +473,20 @@ function mod_Wartosci_od_Rasy() {
   F = parseInt(document.getElementById("input_CHAR").value) + CHAR;
   document.getElementById("input_CHAR").value = F;
   //wiem wiem, mozna to ladniej zapisac
+
+  document.getElementById("modyfikator_rasowy").style.display = "none";
+  postac[4] = document.getElementById("input_SF").value;
+  postac[5] = document.getElementById("input_ZR").value;
+  postac[6] = document.getElementById("input_ZYW").value;
+  postac[7] = document.getElementById("input_PER").value;
+  postac[8] = document.getElementById("input_SW").value;
+  postac[9] = document.getElementById("input_CHAR").value;
 }
 
 function zmiana_Wartosci() {
   suma_kosztow_wszystkich_cech();
+  stopien_I_kostki_Akcji_wg_Wartosci_cechy();
+  laduj_Opis_cechy_do_Aside1();
 }
 
 function suma_kosztow_wszystkich_cech() {
@@ -465,13 +505,21 @@ function suma_kosztow_wszystkich_cech() {
   wartosc_spiner = document.getElementById("input_CHAR").value;
   koszty_cech_w_tablicy[5] = jaki_koszt(wartosc_spiner);
 
-  document.getElementById("Aside1").innerHTML = // tymczasowe rozwiazanie
-    koszty_cech_w_tablicy[0] + // rownie dobrze mozna
-    koszty_cech_w_tablicy[1] + // cala sume z tablicy
-    koszty_cech_w_tablicy[2] + // wrzucic w wartosc_spiner
-    koszty_cech_w_tablicy[3] + // a pozniej ja wzrocic
+  wartosc_spiner =
+    koszty_cech_w_tablicy[0] +
+    koszty_cech_w_tablicy[1] +
+    koszty_cech_w_tablicy[2] +
+    koszty_cech_w_tablicy[3] +
     koszty_cech_w_tablicy[4] +
     koszty_cech_w_tablicy[5];
+
+  var wartosc_punktow;
+  wartosc_punktow = 66 - wartosc_spiner;
+  document.getElementById("punkty_Do_rozdania").textContent = wartosc_punktow;
+
+  if (wartosc_spiner === 66) {
+    document.getElementById("modyfikator_rasowy").style.display = "block";
+  }
 }
 
 function jaki_koszt(wartosc_spiner) {
@@ -516,6 +564,111 @@ function jaki_koszt(wartosc_spiner) {
   }
   return koszt;
 }
+function max_I_min_Dla_cech_wedlug_Ras(rasa) {
+  rasa = postac[3];
+  var inputNumber;
+  if (rasa == "Obsydianin") {
+    inputNumber = document.getElementById("input_SF");
+    inputNumber.min = "15";
+  } else if (rasa == "Troll") {
+    inputNumber = document.getElementById("input_SF");
+    inputNumber.min = "11";
+    inputNumber = document.getElementById("input_ZYW");
+    inputNumber.min = "11";
+  } else if (rasa == "Wietrzniak") {
+    inputNumber = document.getElementById("input_SF");
+    inputNumber.max = "11";
+  }
+}
+
+function stopien_I_kostki_Akcji_wg_Wartosci_cechy() {
+  const inputs = document.querySelectorAll("input[type='number']");
+  const stopnie = document.querySelectorAll("[id^='st_']");
+  const kostki = document.querySelectorAll("[id^='k_']");
+
+  for (let i = 0; i < inputs.length; i++) {
+    const wartosc_cechy = parseFloat(inputs[i].value);
+    let stopien, kostki_Akcji;
+
+    if (wartosc_cechy >= 2 && wartosc_cechy < 4) {
+      stopien = "2";
+      kostki_Akcji = "1K4-1";
+    } else if (wartosc_cechy >= 4 && wartosc_cechy < 7) {
+      stopien = "3";
+      kostki_Akcji = "1K4";
+    } else if (wartosc_cechy >= 7 && wartosc_cechy < 10) {
+      stopien = "4";
+      kostki_Akcji = "1K6";
+    } else if (wartosc_cechy >= 10 && wartosc_cechy < 13) {
+      stopien = "5";
+      kostki_Akcji = "1K8";
+    } else if (wartosc_cechy >= 13 && wartosc_cechy < 16) {
+      stopien = "6";
+      kostki_Akcji = "1K10";
+    } else if (wartosc_cechy >= 16 && wartosc_cechy < 19) {
+      stopien = "7";
+      kostki_Akcji = "1K12";
+    } else if (wartosc_cechy >= 19 && wartosc_cechy < 22) {
+      stopien = "8";
+      kostki_Akcji = "2K6";
+    } else if (wartosc_cechy >= 22 && wartosc_cechy < 25) {
+      stopien = "9";
+      kostki_Akcji = "1K8+1K6";
+    } else if (wartosc_cechy >= 25 && wartosc_cechy < 28) {
+      stopien = "10";
+      kostki_Akcji = "1K10+1K6";
+    } else if (wartosc_cechy >= 28 && wartosc_cechy < 30) {
+      stopien = "11";
+      kostki_Akcji = "1K10+1K8";
+    } else {
+      stopien = "";
+      kostki_Akcji = "";
+    }
+
+    stopnie[i].textContent = stopien;
+    kostki[i].textContent = kostki_Akcji;
+  }
+}
+
+/*
+function stopien_I_kostki_Akcji_wg_Wartosci_cechy() {
+  var wartosc_cechy;
+  var stopien;
+  var kostki_Akcji;
+  if (wartosc_cechy >= 2 && wartosc_cechy < 4) {
+    stopien = "2";
+    kostki_Akcji = "1K4-1";
+  } else if (wartosc_cechy >= 4 && wartosc_cechy < 7) {
+    stopien = "3";
+    kostki_Akcji = "1K4";
+  } else if (wartosc_cechy >= 7 && wartosc_cechy < 10) {
+    stopien = "4";
+    kostki_Akcji = "1K6";
+  } else if (wartosc_cechy >= 10 && wartosc_cechy < 13) {
+    stopien = "5";
+    kostki_Akcji = "1K8";
+  } else if (wartosc_cechy >= 13 && wartosc_cechy < 16) {
+    stopien = "6";
+    kostki_Akcji = "1K10";
+  } else if (wartosc_cechy >= 16 && wartosc_cechy < 19) {
+    stopien = "7";
+    kostki_Akcji = "1K12";
+  } else if (wartosc_cechy >= 19 && wartosc_cechy < 22) {
+    stopien = "8";
+    kostki_Akcji = "2K6";
+  } else if (wartosc_cechy >= 22 && wartosc_cechy < 25) {
+    stopien = "9";
+    kostki_Akcji = "1K8+1K6";
+  } else if (wartosc_cechy >= 25 && wartosc_cechy < 28) {
+    stopien = "10";
+    kostki_Akcji = "1K10+1K6";
+  } else if (wartosc_cechy >= 28 && wartosc_cechy < 30) {
+    stopien = "11";
+    kostki_Akcji = "1K10+1K8";
+  }
+}
+*/
+
 /*
 function zmiana_Wartosci() {
   const inputs = document.querySelectorAll("input[type='number']");
@@ -569,3 +722,39 @@ function wartosc_zmienionego_inputa() {
   document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
 }
 */
+function laduj_Opis_cechy_do_Aside1() {
+  const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  var text_nazwa;
+  //let nazwa_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      nazwa_kliknietego_inputa = event.target.id;
+
+      if (nazwa_kliknietego_inputa === "input_SF") {
+        text_nazwa = "SF";
+      } else if (nazwa_kliknietego_inputa === "input_ZR") {
+        text_nazwa = "ZR";
+      } else if (nazwa_kliknietego_inputa === "input_ZYW") {
+        text_nazwa = "ZYW";
+      } else if (nazwa_kliknietego_inputa === "input_PER") {
+        text_nazwa = "PER";
+      } else if (nazwa_kliknietego_inputa === "input_SW") {
+        text_nazwa = "SW";
+      } else if (nazwa_kliknietego_inputa === "input_CHAR") {
+        text_nazwa = "CHAR";
+      }
+
+      fetch("cechy.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(text_nazwa).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside1").innerHTML = tekstZPliku;
+        });
+    });
+  });
+}
