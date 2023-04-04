@@ -8,6 +8,12 @@ const postac = []; //postac[0] = imie gracza
 //postac[7] = PER
 //postac[8] = SW
 //postac[9] = CHAR
+//postac[10] = SF_stopien
+//postac[11] = ZR_stopien
+//postac[12] = ZYW_stopien
+//postac[13] = PER_stopien
+//postac[14] = SW_stopien
+//postac[15] = CHAR_stopien
 
 var punkty_cechy = 66;
 function showDescription() {
@@ -365,9 +371,96 @@ function radio_Value() {
 
         document.getElementById("Aside2").innerHTML = tekstZPliku;
       });
-  } else {
-    // tutaj formularz metoda losowa
+  } else if (metoda === "metoda_losowa") {
+    fetch("metoda_losowa.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.querySelector("main").innerHTML = data;
+      });
+    fetch("cechy.html")
+      .then((response) => response.text())
+      .then((data1) => {
+        document.getElementById("Aside1").innerHTML = data1;
+      });
+    fetch("rasy.html")
+      .then((response) => response.text())
+      .then((data) => {
+        var value;
+        if (postac[3] === "Człowiek") {
+          value = "Człowiek_mod";
+        } else if (postac[3] === "Elf") {
+          value = "Elf_mod";
+        } else if (postac[3] === "Krasnolud") {
+          value = "Krasnolud_mod";
+        } else if (postac[3] === "Obsydianin") {
+          value = "Obsydianin_mod";
+        } else if (postac[3] === "Ork") {
+          value = "Ork_mod";
+        } else if (postac[3] === "T'skrang") {
+          value = "T'skrang_mod";
+        } else if (postac[3] === "Troll") {
+          value = "Troll_mod";
+        } else if (postac[3] === "Wietrzniak") {
+          value = "Wietrzniak_mod";
+        }
+        const parser = new DOMParser();
+        const htmlDocument = parser.parseFromString(data, "text/html");
+        const tekstZPliku = htmlDocument.getElementById(value).innerHTML;
+
+        document.getElementById("Aside2").innerHTML = tekstZPliku;
+      });
   }
+}
+
+function losowanie_Cechy() {
+  var tablica = [0, 0, 0, 0];
+  tablica[0] = Math.floor(Math.random() * 6) + 1;
+  tablica[1] = Math.floor(Math.random() * 6) + 1;
+  tablica[2] = Math.floor(Math.random() * 6) + 1;
+  tablica[3] = Math.floor(Math.random() * 6) + 1;
+
+  tablica.sort(function (a, b) {
+    return a - b;
+  });
+  tablica[0] = tablica[1] + tablica[2] + tablica[3];
+  return tablica[0];
+}
+
+function losowanie_Szesciu_cech() {
+  var SF = losowanie_Cechy();
+  var ZR = losowanie_Cechy();
+  var ZYW = losowanie_Cechy();
+  var PER = losowanie_Cechy();
+  var SW = losowanie_Cechy();
+  var CHAR = losowanie_Cechy();
+
+  if (postac[3] == "Obsydianin") {
+    do {
+      var SF = losowanie_Cechy();
+    } while (SF < 14);
+    //minimalna SF=15
+  } else if (postac[3] == "Troll") {
+    do {
+      var SF = losowanie_Cechy();
+    } while (SF < 10);
+    do {
+      var ZYW = losowanie_Cechy();
+    } while (ZYW < 10);
+    //minimalna SF=11 i min ZYW=11
+  } else if (postac[3] == "Wietrzniak") {
+    do {
+      var SF = losowanie_Cechy();
+    } while (SF > 11);
+    //minimalna SF=11 i max SF=11
+  }
+
+  document.getElementById("input_SF").value = SF;
+  document.getElementById("input_ZR").value = ZR;
+  document.getElementById("input_ZYW").value = ZYW;
+  document.getElementById("input_PER").value = PER;
+  document.getElementById("input_SW").value = SW;
+  document.getElementById("input_CHAR").value = CHAR;
+  stopien_I_kostki_Akcji_wg_Wartosci_cechy();
 }
 
 function race_limits() {
