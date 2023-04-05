@@ -574,12 +574,18 @@ function mod_Wartosci_od_Rasy() {
   postac[7] = document.getElementById("input_PER").value;
   postac[8] = document.getElementById("input_SW").value;
   postac[9] = document.getElementById("input_CHAR").value;
+
+  stopien_I_kostki_Akcji_wg_Wartosci_cechy();
+  stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej();
+  // funkcja wspoczynniki
+  // wywolanie strony talenty
 }
 
 function zmiana_Wartosci() {
   suma_kosztow_wszystkich_cech();
   stopien_I_kostki_Akcji_wg_Wartosci_cechy();
   laduj_Opis_cechy_do_Aside1();
+  stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej();
 }
 
 function suma_kosztow_wszystkich_cech() {
@@ -723,44 +729,51 @@ function stopien_I_kostki_Akcji_wg_Wartosci_cechy() {
   }
 }
 
-/*
-function stopien_I_kostki_Akcji_wg_Wartosci_cechy() {
-  var wartosc_cechy;
-  var stopien;
-  var kostki_Akcji;
-  if (wartosc_cechy >= 2 && wartosc_cechy < 4) {
-    stopien = "2";
-    kostki_Akcji = "1K4-1";
-  } else if (wartosc_cechy >= 4 && wartosc_cechy < 7) {
-    stopien = "3";
-    kostki_Akcji = "1K4";
-  } else if (wartosc_cechy >= 7 && wartosc_cechy < 10) {
-    stopien = "4";
-    kostki_Akcji = "1K6";
-  } else if (wartosc_cechy >= 10 && wartosc_cechy < 13) {
-    stopien = "5";
-    kostki_Akcji = "1K8";
-  } else if (wartosc_cechy >= 13 && wartosc_cechy < 16) {
-    stopien = "6";
-    kostki_Akcji = "1K10";
-  } else if (wartosc_cechy >= 16 && wartosc_cechy < 19) {
-    stopien = "7";
-    kostki_Akcji = "1K12";
-  } else if (wartosc_cechy >= 19 && wartosc_cechy < 22) {
-    stopien = "8";
-    kostki_Akcji = "2K6";
-  } else if (wartosc_cechy >= 22 && wartosc_cechy < 25) {
-    stopien = "9";
-    kostki_Akcji = "1K8+1K6";
-  } else if (wartosc_cechy >= 25 && wartosc_cechy < 28) {
-    stopien = "10";
-    kostki_Akcji = "1K10+1K6";
-  } else if (wartosc_cechy >= 28 && wartosc_cechy < 30) {
-    stopien = "11";
-    kostki_Akcji = "1K10+1K8";
-  }
+function laduj_Opis_cechy_do_Aside1() {
+  const inputs = document.querySelectorAll("input[type='number']");
+  var nazwa_kliknietego_inputa;
+  var text_nazwa;
+  //let nazwa_kliknietego_inputa;
+  inputs.forEach(function (input) {
+    input.addEventListener("change", function (event) {
+      nazwa_kliknietego_inputa = event.target.id;
+
+      if (nazwa_kliknietego_inputa === "input_SF") {
+        text_nazwa = "SF";
+      } else if (nazwa_kliknietego_inputa === "input_ZR") {
+        text_nazwa = "ZR";
+      } else if (nazwa_kliknietego_inputa === "input_ZYW") {
+        text_nazwa = "ZYW";
+      } else if (nazwa_kliknietego_inputa === "input_PER") {
+        text_nazwa = "PER";
+      } else if (nazwa_kliknietego_inputa === "input_SW") {
+        text_nazwa = "SW";
+      } else if (nazwa_kliknietego_inputa === "input_CHAR") {
+        text_nazwa = "CHAR";
+      }
+
+      fetch("cechy.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(text_nazwa).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside1").innerHTML = tekstZPliku;
+        });
+    });
+  });
 }
-*/
+
+function stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej() {
+  postac[10] = document.getElementById("st_SF").textContent;
+  postac[11] = document.getElementById("st_ZR").textContent;
+  postac[12] = document.getElementById("st_ZYW").textContent;
+  postac[13] = document.getElementById("st_PER").textContent;
+  postac[14] = document.getElementById("st_SW").textContent;
+  postac[15] = document.getElementById("st_CHAR").textContent;
+}
 
 /*
 function zmiana_Wartosci() {
@@ -815,39 +828,41 @@ function wartosc_zmienionego_inputa() {
   document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
 }
 */
-function laduj_Opis_cechy_do_Aside1() {
-  const inputs = document.querySelectorAll("input[type='number']");
-  var nazwa_kliknietego_inputa;
-  var text_nazwa;
-  //let nazwa_kliknietego_inputa;
-  inputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      nazwa_kliknietego_inputa = event.target.id;
-
-      if (nazwa_kliknietego_inputa === "input_SF") {
-        text_nazwa = "SF";
-      } else if (nazwa_kliknietego_inputa === "input_ZR") {
-        text_nazwa = "ZR";
-      } else if (nazwa_kliknietego_inputa === "input_ZYW") {
-        text_nazwa = "ZYW";
-      } else if (nazwa_kliknietego_inputa === "input_PER") {
-        text_nazwa = "PER";
-      } else if (nazwa_kliknietego_inputa === "input_SW") {
-        text_nazwa = "SW";
-      } else if (nazwa_kliknietego_inputa === "input_CHAR") {
-        text_nazwa = "CHAR";
-      }
-
-      fetch("cechy.html")
-        .then((response) => response.text())
-        .then((data) => {
-          const parser = new DOMParser();
-          const htmlDocument = parser.parseFromString(data, "text/html");
-          const tekstZPliku = htmlDocument.getElementById(text_nazwa).innerHTML;
-          console.log("Description text: " + tekstZPliku);
-
-          document.getElementById("Aside1").innerHTML = tekstZPliku;
-        });
-    });
-  });
+/*
+function stopien_I_kostki_Akcji_wg_Wartosci_cechy() {
+  var wartosc_cechy;
+  var stopien;
+  var kostki_Akcji;
+  if (wartosc_cechy >= 2 && wartosc_cechy < 4) {
+    stopien = "2";
+    kostki_Akcji = "1K4-1";
+  } else if (wartosc_cechy >= 4 && wartosc_cechy < 7) {
+    stopien = "3";
+    kostki_Akcji = "1K4";
+  } else if (wartosc_cechy >= 7 && wartosc_cechy < 10) {
+    stopien = "4";
+    kostki_Akcji = "1K6";
+  } else if (wartosc_cechy >= 10 && wartosc_cechy < 13) {
+    stopien = "5";
+    kostki_Akcji = "1K8";
+  } else if (wartosc_cechy >= 13 && wartosc_cechy < 16) {
+    stopien = "6";
+    kostki_Akcji = "1K10";
+  } else if (wartosc_cechy >= 16 && wartosc_cechy < 19) {
+    stopien = "7";
+    kostki_Akcji = "1K12";
+  } else if (wartosc_cechy >= 19 && wartosc_cechy < 22) {
+    stopien = "8";
+    kostki_Akcji = "2K6";
+  } else if (wartosc_cechy >= 22 && wartosc_cechy < 25) {
+    stopien = "9";
+    kostki_Akcji = "1K8+1K6";
+  } else if (wartosc_cechy >= 25 && wartosc_cechy < 28) {
+    stopien = "10";
+    kostki_Akcji = "1K10+1K6";
+  } else if (wartosc_cechy >= 28 && wartosc_cechy < 30) {
+    stopien = "11";
+    kostki_Akcji = "1K10+1K8";
+  }
 }
+*/
