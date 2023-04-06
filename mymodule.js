@@ -14,6 +14,22 @@ const postac = []; //postac[0] = imie gracza
 //postac[13] = PER_stopien
 //postac[14] = SW_stopien
 //postac[15] = CHAR_stopien
+//postac[16] = obrona fizyczna
+//postac[17] = obrona magiczna
+//postac[18] = obrona spoleczna
+//postac[19] = szybkosc
+//postac[20] = szybkosc Wietrzniak na ziemi
+//postac[21] = udzwig
+//postac[22] = prog zycia
+//postac[23] = prog ran
+//postac[24] = prog przytomnosci
+//postac[25] = testy zdrowienia
+//postac[26] = pancerz duchowy
+//postac[27] = kostka akcji Karma
+//postac[28] = koszt Karmy w punktach legend
+//postac[29] = poczatkowa Karma
+//postac[30] = maksymalna Karma
+//postac[26] =
 
 var punkty_cechy = 66;
 function showDescription() {
@@ -577,6 +593,7 @@ function mod_Wartosci_od_Rasy() {
 
   stopien_I_kostki_Akcji_wg_Wartosci_cechy();
   stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej();
+  obrona();
   // funkcja wspoczynniki
   // wywolanie strony talenty
 }
@@ -586,6 +603,7 @@ function zmiana_Wartosci() {
   stopien_I_kostki_Akcji_wg_Wartosci_cechy();
   laduj_Opis_cechy_do_Aside1();
   stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej();
+  obrona();
 }
 
 function suma_kosztow_wszystkich_cech() {
@@ -775,6 +793,519 @@ function stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej() {
   postac[15] = document.getElementById("st_CHAR").textContent;
 }
 
+function obliczObrone(wartosc_cechy) {
+  var obrona;
+  if (wartosc_cechy == 1) {
+    obrona = 2;
+  } else if (wartosc_cechy == 2 || wartosc_cechy == 3) {
+    obrona = 3;
+  } else if (wartosc_cechy == 4 || wartosc_cechy == 5 || wartosc_cechy == 6) {
+    obrona = 4;
+  } else if (wartosc_cechy == 7 || wartosc_cechy == 8) {
+    obrona = 5;
+  } else if (wartosc_cechy == 9 || wartosc_cechy == 10) {
+    obrona = 6;
+  } else if (
+    wartosc_cechy == 11 ||
+    wartosc_cechy == 12 ||
+    wartosc_cechy == 13
+  ) {
+    obrona = 7;
+  } else if (wartosc_cechy == 14 || wartosc_cechy == 15) {
+    obrona = 8;
+  } else if (wartosc_cechy == 16 || wartosc_cechy == 17) {
+    obrona = 9;
+  } else if (
+    wartosc_cechy == 18 ||
+    wartosc_cechy == 19 ||
+    wartosc_cechy == 20
+  ) {
+    obrona = 10;
+  } else if (wartosc_cechy == 21 || wartosc_cechy == 22) {
+    obrona = 11;
+  } else if (wartosc_cechy == 23 || wartosc_cechy == 24) {
+    obrona = 12;
+  } else if (
+    wartosc_cechy == 25 ||
+    wartosc_cechy == 26 ||
+    wartosc_cechy == 27
+  ) {
+    obrona = 13;
+  } else if (wartosc_cechy == 28 || wartosc_cechy == 29) {
+    obrona = 14;
+  } else if (wartosc_cechy == 30) {
+    obrona = 15;
+  }
+  if (postac[3] == "Wietrzniak" && wartosc_cechy == postac[5]) {
+    // mozliwy blad bo wartosc_cechy moze
+    obrona = obrona + 2; // rownac sie innej cesze niz ZR
+  }
+  return obrona;
+}
+
+function szybkosc() {
+  var wartosc_cechy = postac[5];
+  var wartosc_cechy_w = postac[5];
+  var szybkosc;
+  if ((postac[3] = "Elf")) {
+    wartosc_cechy = wartosc_cechy + 1;
+  } else if ((postac[3] = "Krasnolud")) {
+    wartosc_cechy = wartosc_cechy - 2;
+  } else if ((postac[3] = "Obsydianin")) {
+    wartosc_cechy = wartosc_cechy - 3;
+  } else if ((postac[3] = "Ork")) {
+    wartosc_cechy = wartosc_cechy + 2;
+  } else if ((postac[3] = "Wietrzniak")) {
+    wartosc_cechy = wartosc_cechy + 2;
+    wartosc_cechy_w = wartosc_cechy_w - 8;
+  }
+
+  if (wartosc_cechy == 1) {
+    szybkosc = "25/13";
+  } else if (wartosc_cechy == 2) {
+    szybkosc = "28/14";
+  } else if (wartosc_cechy == 3) {
+    szybkosc = "30/15";
+  } else if (wartosc_cechy == 4) {
+    szybkosc = "32/16";
+  } else if (wartosc_cechy == 5) {
+    szybkosc = "35/18";
+  } else if (wartosc_cechy == 6) {
+    szybkosc = "38/19";
+  } else if (wartosc_cechy == 7) {
+    szybkosc = "40/20";
+  } else if (wartosc_cechy == 8) {
+    szybkosc = "43/22";
+  } else if (wartosc_cechy == 9) {
+    szybkosc = "48/24";
+  } else if (wartosc_cechy == 10) {
+    szybkosc = "50/25";
+  } else if (wartosc_cechy == 11) {
+    szybkosc = "54/27";
+  } else if (wartosc_cechy == 12) {
+    szybkosc = "57/29";
+  } else if (wartosc_cechy == 13) {
+    szybkosc = "60/30";
+  } else if (wartosc_cechy == 14) {
+    szybkosc = "65/33";
+  } else if (wartosc_cechy == 15) {
+    szybkosc = "70/35";
+  } else if (wartosc_cechy == 16) {
+    szybkosc = "75/38";
+  } else if (wartosc_cechy == 17) {
+    szybkosc = "80/40";
+  } else if (wartosc_cechy == 18) {
+    szybkosc = "85/42";
+  } else if (wartosc_cechy == 19) {
+    szybkosc = "90/45";
+  } else if (wartosc_cechy == 20) {
+    szybkosc = "100/50";
+  } else if (wartosc_cechy == 21) {
+    szybkosc = "110/55";
+  } else if (wartosc_cechy == 22) {
+    szybkosc = "120/60";
+  } else if (wartosc_cechy == 23) {
+    szybkosc = "130/65";
+  } else if (wartosc_cechy == 24) {
+    szybkosc = "140/70";
+  } else if (wartosc_cechy == 25) {
+    szybkosc = "150/75";
+  } else if (wartosc_cechy == 26) {
+    szybkosc = "160/80";
+  } else if (wartosc_cechy == 27) {
+    szybkosc = "170/85";
+  } else if (wartosc_cechy == 28) {
+    szybkosc = "180/90";
+  } else if (wartosc_cechy == 29) {
+    szybkosc = "200/100";
+  } else if (wartosc_cechy == 30) {
+    szybkosc = "220/110";
+  }
+
+  if (wartosc_cechy_w_w == 1) {
+    szybkosc_w = "25/13";
+  } else if (wartosc_cechy_w == 2) {
+    szybkosc_w = "28/14";
+  } else if (wartosc_cechy_w == 3) {
+    szybkosc_w = "30/15";
+  } else if (wartosc_cechy_w == 4) {
+    szybkosc_w = "32/16";
+  } else if (wartosc_cechy_w == 5) {
+    szybkosc_w = "35/18";
+  } else if (wartosc_cechy_w == 6) {
+    szybkosc_w = "38/19";
+  } else if (wartosc_cechy_w == 7) {
+    szybkosc_w = "40/20";
+  } else if (wartosc_cechy_w == 8) {
+    szybkosc_w = "43/22";
+  } else if (wartosc_cechy_w == 9) {
+    szybkosc_w = "48/24";
+  } else if (wartosc_cechy_w == 10) {
+    szybkosc_w = "50/25";
+  } else if (wartosc_cechy_w == 11) {
+    szybkosc_w = "54/27";
+  } else if (wartosc_cechy_w == 12) {
+    szybkosc_w = "57/29";
+  } else if (wartosc_cechy_w == 13) {
+    szybkosc_w = "60/30";
+  } else if (wartosc_cechy_w == 14) {
+    szybkosc_w = "65/33";
+  } else if (wartosc_cechy_w == 15) {
+    szybkosc_w = "70/35";
+  } else if (wartosc_cechy_w == 16) {
+    szybkosc_w = "75/38";
+  } else if (wartosc_cechy_w == 17) {
+    szybkosc_w = "80/40";
+  } else if (wartosc_cechy_w == 18) {
+    szybkosc_w = "85/42";
+  } else if (wartosc_cechy_w == 19) {
+    szybkosc_w = "90/45";
+  } else if (wartosc_cechy_w == 20) {
+    szybkosc_w = "100/50";
+  } else if (wartosc_cechy_w == 21) {
+    szybkosc_w = "110/55";
+  } else if (wartosc_cechy_w == 22) {
+    szybkosc_w = "120/60";
+  } else if (wartosc_cechy_w == 23) {
+    szybkosc_w = "130/65";
+  } else if (wartosc_cechy_w == 24) {
+    szybkosc_w = "140/70";
+  } else if (wartosc_cechy_w == 25) {
+    szybkosc_w = "150/75";
+  } else if (wartosc_cechy_w == 26) {
+    szybkosc_w = "160/80";
+  } else if (wartosc_cechy_w == 27) {
+    szybkosc_w = "170/85";
+  } else if (wartosc_cechy_w == 28) {
+    szybkosc_w = "180/90";
+  } else if (wartosc_cechy_w == 29) {
+    szybkosc_w = "200/100";
+  } else if (wartosc_cechy_w == 30) {
+    szybkosc_w = "220/110";
+  }
+
+  szybkosc = postac[19];
+  szybkosc_w = postac[20];
+}
+function udzwig() {
+  var wartosc_cechy = postac[4];
+  var udzwig;
+
+  if (wartosc_cechy == 1) {
+    udzwig = "5/10";
+  } else if (wartosc_cechy == 2) {
+    udzwig = "8/15";
+  } else if (wartosc_cechy == 3) {
+    udzwig = "10/20";
+  } else if (wartosc_cechy == 4) {
+    udzwig = "12/25";
+  } else if (wartosc_cechy == 5) {
+    udzwig = "15/30";
+  } else if (wartosc_cechy == 6) {
+    udzwig = "18/36";
+  } else if (wartosc_cechy == 7) {
+    udzwig = "20/40";
+  } else if (wartosc_cechy == 8) {
+    udzwig = "25/50";
+  } else if (wartosc_cechy == 9) {
+    udzwig = "30/60";
+  } else if (wartosc_cechy == 10) {
+    udzwig = "35/70";
+  } else if (wartosc_cechy == 11) {
+    udzwig = "40/80";
+  } else if (wartosc_cechy == 12) {
+    udzwig = "45/90";
+  } else if (wartosc_cechy == 13) {
+    udzwig = "50/100";
+  } else if (wartosc_cechy == 14) {
+    udzwig = "60/120";
+  } else if (wartosc_cechy == 15) {
+    udzwig = "70/140";
+  } else if (wartosc_cechy == 16) {
+    udzwig = "80/160";
+  } else if (wartosc_cechy == 17) {
+    udzwig = "100/200";
+  } else if (wartosc_cechy == 18) {
+    udzwig = "115/230";
+  } else if (wartosc_cechy == 19) {
+    udzwig = "135/270";
+  } else if (wartosc_cechy == 20) {
+    udzwig = "155/310";
+  } else if (wartosc_cechy == 21) {
+    udzwig = "180/360";
+  } else if (wartosc_cechy == 22) {
+    udzwig = "215/430";
+  } else if (wartosc_cechy == 23) {
+    udzwig = "250/500";
+  } else if (wartosc_cechy == 24) {
+    udzwig = "290/580";
+  } else if (wartosc_cechy == 25) {
+    udzwig = "335/670";
+  } else if (wartosc_cechy == 26) {
+    udzwig = "390/780";
+  } else if (wartosc_cechy == 27) {
+    udzwig = "460/920";
+  } else if (wartosc_cechy == 28) {
+    udzwig = "535/1070";
+  } else if (wartosc_cechy == 29) {
+    udzwig = "600/1200";
+  } else if (wartosc_cechy == 30) {
+    udzwig = "725/1450";
+  }
+  postac[21] = udzwig;
+}
+
+function zdrowie() {
+  var wartosc_cechy = postac[6];
+  var prog_zycia;
+  var prog_ran;
+  var prog_przytomnosci;
+  var testy_zdrowienia;
+
+  if (wartosc_cechy == 1) {
+    prog_zycia = 19;
+    prog_ran = 3;
+    prog_przytomnosci = 10;
+    testy_zdrowienia = "1/2";
+  } else if (wartosc_cechy == 2) {
+    prog_zycia = 20;
+    prog_ran = 4;
+    prog_przytomnosci = 11;
+    testy_zdrowienia = "1/2";
+  } else if (wartosc_cechy == 3) {
+    prog_zycia = 22;
+    prog_ran = 4;
+    prog_przytomnosci = 13;
+    testy_zdrowienia = "1";
+  } else if (wartosc_cechy == 4) {
+    prog_zycia = 23;
+    prog_ran = 5;
+    prog_przytomnosci = 14;
+    testy_zdrowienia = "1";
+  } else if (wartosc_cechy == 5) {
+    prog_zycia = 24;
+    prog_ran = 5;
+    prog_przytomnosci = 15;
+    testy_zdrowienia = "1";
+  } else if (wartosc_cechy == 6) {
+    prog_zycia = 26;
+    prog_ran = 6;
+    prog_przytomnosci = 17;
+    testy_zdrowienia = "1";
+  } else if (wartosc_cechy == 7) {
+    prog_zycia = 27;
+    prog_ran = 6;
+    prog_przytomnosci = 18;
+    testy_zdrowienia = "1";
+  } else if (wartosc_cechy == 8) {
+    prog_zycia = 28;
+    prog_ran = 7;
+    prog_przytomnosci = 19;
+    testy_zdrowienia = "2";
+  } else if (wartosc_cechy == 9) {
+    prog_zycia = 30;
+    prog_ran = 7;
+    prog_przytomnosci = 21;
+    testy_zdrowienia = "2";
+  } else if (wartosc_cechy == 10) {
+    (prog_zycia = 31), (prog_ran = 8);
+    prog_przytomnosci = 22;
+    testy_zdrowienia = "2";
+  } else if (wartosc_cechy == 11) {
+    prog_zycia = 32;
+    prog_ran = 8;
+    prog_przytomnosci = 24;
+    testy_zdrowienia = "2";
+  } else if (wartosc_cechy == 12) {
+    prog_zycia = 34;
+    prog_ran = 9;
+    prog_przytomnosci = 26;
+    testy_zdrowienia = "2";
+  } else if (wartosc_cechy == 13) {
+    prog_zycia = 35;
+    prog_ran = 9;
+    prog_przytomnosci = 27;
+    testy_zdrowienia = "2";
+  } else if (wartosc_cechy == 14) {
+    prog_zycia = 36;
+    prog_ran = 10;
+    prog_przytomnosci = 28;
+    testy_zdrowienia = "3";
+  } else if (wartosc_cechy == 15) {
+    prog_zycia = 38;
+    prog_ran = 10;
+    prog_przytomnosci = 29;
+    testy_zdrowienia = "3";
+  } else if (wartosc_cechy == 16) {
+    prog_zycia = 39;
+    prog_ran = 11;
+    prog_przytomnosci = 31;
+    testy_zdrowienia = "3";
+  } else if (wartosc_cechy == 17) {
+    prog_zycia = 40;
+    prog_ran = 11;
+    prog_przytomnosci = 32;
+    testy_zdrowienia = "3";
+  } else if (wartosc_cechy == 18) {
+    prog_zycia = 42;
+    prog_ran = 12;
+    prog_przytomnosci = 34;
+    testy_zdrowienia = "3";
+  } else if (wartosc_cechy == 19) {
+    prog_zycia = 43;
+    prog_ran = 12;
+    prog_przytomnosci = 35;
+    testy_zdrowienia = "3";
+  } else if (wartosc_cechy == 20) {
+    prog_zycia = 44;
+    prog_ran = 13;
+    prog_przytomnosci = 36;
+    testy_zdrowienia = "4";
+  } else if (wartosc_cechy == 21) {
+    prog_zycia = 46;
+    prog_ran = 13;
+    prog_przytomnosci = 39;
+    testy_zdrowienia = "4";
+  } else if (wartosc_cechy == 22) {
+    prog_zycia = 47;
+    prog_ran = 13;
+    prog_przytomnosci = 40;
+    testy_zdrowienia = "4";
+  } else if (wartosc_cechy == 23) {
+    prog_zycia = 48;
+    prog_ran = 14;
+    prog_przytomnosci = 43;
+    testy_zdrowienia = "4";
+  } else if (wartosc_cechy == 24) {
+    prog_zycia = 50;
+    prog_ran = 14;
+    prog_przytomnosci = 43;
+    testy_zdrowienia = "4";
+  } else if (wartosc_cechy == 25) {
+    prog_zycia = 51;
+    prog_ran = 15;
+    prog_przytomnosci = 44;
+    testy_zdrowienia = "4";
+  } else if (wartosc_cechy == 26) {
+    prog_zycia = 52;
+    prog_ran = 15;
+    prog_przytomnosci = 45;
+    testy_zdrowienia = "5";
+  } else if (wartosc_cechy == 27) {
+    prog_zycia = 54;
+    prog_ran = 15;
+    prog_przytomnosci = 47;
+    testy_zdrowienia = "5";
+  } else if (wartosc_cechy == 28) {
+    prog_zycia = 55;
+    prog_ran = 16;
+    prog_przytomnosci = 48;
+    testy_zdrowienia = "5";
+  } else if (wartosc_cechy == 29) {
+    prog_zycia = 56;
+    prog_ran = 16;
+    prog_przytomnosci = 49;
+    testy_zdrowienia = "5";
+  } else if (wartosc_cechy == 30) {
+    prog_zycia = 58;
+    prog_ran = 17;
+    prog_przytomnosci = 51;
+    testy_zdrowienia = "5";
+  }
+  postac[22] = prog_zycia;
+  postac[23] = prog_ran;
+  postac[24] = prog_przytomnosci;
+  postac[25] = testy_zdrowienia;
+}
+
+function pancerz_duchowy() {
+  var wartosc_cechy = postac[8];
+  var pancerz_duchowy;
+  if (wartosc_cechy > 0 && wartosc_cechy < 11) {
+    pancerz_duchowy = 0;
+  } else if (wartosc_cechy > 10 && wartosc_cechy < 14) {
+    pancerz_duchowy = 1;
+  } else if (wartosc_cechy > 13 && wartosc_cechy < 17) {
+    pancerz_duchowy = 2;
+  } else if (wartosc_cechy > 16 && wartosc_cechy < 20) {
+    pancerz_duchowy = 3;
+  } else if (wartosc_cechy > 19 && wartosc_cechy < 23) {
+    pancerz_duchowy = 4;
+  } else if (wartosc_cechy > 22 && wartosc_cechy < 26) {
+    pancerz_duchowy = 5;
+  } else if (wartosc_cechy > 25 && wartosc_cechy < 28) {
+    pancerz_duchowy = 6;
+  } else if (wartosc_cechy > 27 && wartosc_cechy < 31) {
+    pancerz_duchowy = 7;
+  }
+  postac[26] = pancerz_duchowy;
+}
+
+function obrona() {
+  postac[16] = obliczObrone(postac[5]);
+  postac[17] = obliczObrone(postac[7]);
+  postac[18] = obliczObrone(postac[9]);
+  szybkosc();
+  udzwig();
+  zdrowie();
+  pancerz_duchowy();
+  // tutaj dodac karme
+}
+
+/*function wspoczynniki() {
+  var nazwa_warosci_cechy = "wartosc_cechy_";
+  nazwa_obrony = "obrona_";
+  var wartosc_cechy_ZR;
+  var wartosc_cechy_SW;
+  var wartosc_cechy_CHAR;
+  var obrana_fiz;
+  var obrana_mag;
+  var obrana_spol;
+  var wartosc_cechy;
+  var obrona;
+  if (wartosc_cechy == 1) {
+    obrona = 2;
+  } else if (wartosc_cechy == 2 || wartosc_cechy == 3) {
+    obrona = 3;
+  } else if (wartosc_cechy == 4 || wartosc_cechy == 5 || wartosc_cechy == 6) {
+    obrona = 4;
+  } else if (wartosc_cechy == 7 || wartosc_cechy == 8) {
+    obrona = 5;
+  } else if (wartosc_cechy == 9 || wartosc_cechy == 10) {
+    obrona = 6;
+  } else if (
+    wartosc_cechy == 11 ||
+    wartosc_cechy == 12 ||
+    wartosc_cechy == 13
+  ) {
+    obrona = 7;
+  } else if (wartosc_cechy == 14 || wartosc_cechy == 15) {
+    obrona = 8;
+  } else if (wartosc_cechy == 16 || wartosc_cechy == 17) {
+    obrona = 9;
+  } else if (
+    wartosc_cechy == 18 ||
+    wartosc_cechy == 19 ||
+    wartosc_cechy == 20
+  ) {
+    obrona = 10;
+  } else if (wartosc_cechy == 21 || wartosc_cechy == 22) {
+    obrona = 11;
+  } else if (wartosc_cechy == 23 || wartosc_cechy == 24) {
+    obrona = 12;
+  } else if (
+    wartosc_cechy == 25 ||
+    wartosc_cechy == 26 ||
+    wartosc_cechy == 27
+  ) {
+    obrona = 13;
+  } else if (wartosc_cechy == 28 || wartosc_cechy == 29) {
+    obrona = 14;
+  } else if (wartosc_cechy == 30) {
+    obrona = 15;
+  }
+}
+*/
 /*
 function zmiana_Wartosci() {
   const inputs = document.querySelectorAll("input[type='number']");
