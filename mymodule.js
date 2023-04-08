@@ -1249,9 +1249,60 @@ function obrona() {
   udzwig();
   zdrowie();
   pancerz_duchowy();
-  // tutaj dodac karme
+  karma();
 }
+function karma() {
+  var kostki_akcji;
+  var koszt_Punktow_Punktach_legend;
+  var karma_poczatkowa;
+  var Karma_maksymalna;
 
+  if (postac[3] == "Człowiek") {
+    kostki_akcji = "k8";
+    koszt_Punktow_Punktach_legend = 6;
+    karma_poczatkowa = 10;
+    Karma_maksymalna = 40;
+  } else if (postac[3] == "Elf") {
+    kostki_akcji = "k6";
+    koszt_Punktow_Punktach_legend = 10;
+    karma_poczatkowa = 5;
+    Karma_maksymalna = 25;
+  } else if (postac[3] == "Krasnolud") {
+    kostki_akcji = "k6";
+    koszt_Punktow_Punktach_legend = 10;
+    karma_poczatkowa = 6;
+    Karma_maksymalna = 25;
+  } else if (postac[3] == "Obsydianin") {
+    kostki_akcji = "k4";
+    koszt_Punktow_Punktach_legend = 10;
+    karma_poczatkowa = 5;
+    Karma_maksymalna = 20;
+  } else if (postac[3] == "Ork") {
+    kostki_akcji = "k8";
+    koszt_Punktow_Punktach_legend = 7;
+    karma_poczatkowa = 10;
+    Karma_maksymalna = 40;
+  } else if (postac[3] == "T'skrang") {
+    kostki_akcji = "k6";
+    koszt_Punktow_Punktach_legend = 8;
+    karma_poczatkowa = 5;
+    Karma_maksymalna = 25;
+  } else if (postac[3] == "Troll") {
+    kostki_akcji = "k4";
+    koszt_Punktow_Punktach_legend = 10;
+    karma_poczatkowa = 6;
+    Karma_maksymalna = 20;
+  } else if (postac[3] == "Wietrzniak") {
+    kostki_akcji = "k10";
+    koszt_Punktow_Punktach_legend = 5;
+    karma_poczatkowa = 15;
+    Karma_maksymalna = 60;
+  }
+  postac[27] = kostki_akcji;
+  postac[28] = koszt_Punktow_Punktach_legend;
+  postac[29] = karma_poczatkowa;
+  postac[30] = Karma_maksymalna;
+}
 /*function wspoczynniki() {
   var nazwa_warosci_cechy = "wartosc_cechy_";
   nazwa_obrony = "obrona_";
