@@ -29,7 +29,7 @@ const postac = []; //postac[0] = imie gracza
 //postac[28] = koszt Karmy w punktach legend
 //postac[29] = poczatkowa Karma
 //postac[30] = maksymalna Karma
-//postac[26] =
+//postac[31] = !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Pancerz fiz
 
 var punkty_cechy = 66;
 function showDescription() {
@@ -517,51 +517,61 @@ function showForm(formId) {
 }
 function mod_Wartosci_od_Rasy() {
   var x = postac[3];
-  var ZR, SF, ZYW, PER, SW, CHAR;
-  var A, B, C, D, E, F;
-  if (x == "Elf") {
+  var ZR = 0,
+    SF = 0,
+    ZYW = 0,
+    PER = 0,
+    SW = 0,
+    CHAR = 0;
+  var A = 0,
+    B = 0,
+    C = 0,
+    D = 0,
+    E = 0,
+    F = 0;
+  if (x === "Elf") {
     ZR = 2;
     SF = 0;
     ZYW = -2;
     PER = 1;
     SW = 1;
     CHAR = 1;
-  } else if (x == "Krasnolud") {
+  } else if (x === "Krasnolud") {
     ZR = 0;
     SF = 2;
     ZYW = 3;
     PER = 0;
     SW = 0;
     CHAR = -2;
-  } else if (x == "Obsydianin") {
+  } else if (x === "Obsydianin") {
     ZR = -2;
     SF = 6;
     ZYW = 4;
     PER = -1;
     SW = 0;
     CHAR = -1;
-  } else if (x == "Ork") {
+  } else if (x === "Ork") {
     ZR = -1;
     SF = 3;
     ZYW = 1;
     PER = 0;
     SW = -2;
     CHAR = -1;
-  } else if (x == "Troll") {
+  } else if (x === "Troll") {
     ZR = 0;
     SF = 4;
     ZYW = 2;
     PER = -1;
     SW = 1;
     CHAR = 0;
-  } else if (x == "T'skrang") {
+  } else if (x === "T'skrang") {
     ZR = 1;
     SF = 0;
     ZYW = 1;
     PER = 0;
     SW = 0;
     CHAR = 1;
-  } else if (x == "Wietrzniak") {
+  } else if (x === "Wietrzniak") {
     ZR = 1;
     SF = -4;
     ZYW = -3;
@@ -594,8 +604,7 @@ function mod_Wartosci_od_Rasy() {
   stopien_I_kostki_Akcji_wg_Wartosci_cechy();
   stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej();
   obrona();
-  // funkcja wspoczynniki
-  // wywolanie strony talenty
+  wywolanie_okna_talenty();
 }
 
 function zmiana_Wartosci() {
@@ -603,7 +612,6 @@ function zmiana_Wartosci() {
   stopien_I_kostki_Akcji_wg_Wartosci_cechy();
   laduj_Opis_cechy_do_Aside1();
   stopien_Cechy_przypisanie_Wartosci_w_Tablicy_globalnej();
-  obrona();
 }
 
 function suma_kosztow_wszystkich_cech() {
@@ -847,15 +855,15 @@ function szybkosc() {
   var wartosc_cechy = postac[5];
   var wartosc_cechy_w = postac[5];
   var szybkosc;
-  if ((postac[3] = "Elf")) {
+  if (postac[3] == "Elf") {
     wartosc_cechy = wartosc_cechy + 1;
-  } else if ((postac[3] = "Krasnolud")) {
+  } else if (postac[3] == "Krasnolud") {
     wartosc_cechy = wartosc_cechy - 2;
-  } else if ((postac[3] = "Obsydianin")) {
+  } else if (postac[3] == "Obsydianin") {
     wartosc_cechy = wartosc_cechy - 3;
-  } else if ((postac[3] = "Ork")) {
+  } else if (postac[3] == "Ork") {
     wartosc_cechy = wartosc_cechy + 2;
-  } else if ((postac[3] = "Wietrzniak")) {
+  } else if (postac[3] == "Wietrzniak") {
     wartosc_cechy = wartosc_cechy + 2;
     wartosc_cechy_w = wartosc_cechy_w - 8;
   }
@@ -922,7 +930,7 @@ function szybkosc() {
     szybkosc = "220/110";
   }
 
-  if (wartosc_cechy_w_w == 1) {
+  if (wartosc_cechy_w == 1) {
     szybkosc_w = "25/13";
   } else if (wartosc_cechy_w == 2) {
     szybkosc_w = "28/14";
@@ -1056,6 +1064,9 @@ function udzwig() {
 }
 
 function zdrowie() {
+  if (postac[3] == "Obsydianin") {
+    postac[31] = 3;
+  }
   var wartosc_cechy = postac[6];
   var prog_zycia;
   var prog_ran;
@@ -1212,6 +1223,9 @@ function zdrowie() {
     prog_przytomnosci = 51;
     testy_zdrowienia = "5";
   }
+  if (postac[3 == "Obsydianin"]) {
+    prog_ran = prog_ran + 3;
+  }
   postac[22] = prog_zycia;
   postac[23] = prog_ran;
   postac[24] = prog_przytomnosci;
@@ -1250,6 +1264,7 @@ function obrona() {
   zdrowie();
   pancerz_duchowy();
   karma();
+  wywolanie_okna_talenty();
 }
 function karma() {
   var kostki_akcji;
@@ -1303,6 +1318,27 @@ function karma() {
   postac[29] = karma_poczatkowa;
   postac[30] = Karma_maksymalna;
 }
+
+function wywolanie_okna_talenty() {
+  fetch("tabela_talenty.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.querySelector("#Aside1").innerHTML = data;
+    });
+  document.querySelector("main").innerHTML =
+    "<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br>Masz do dyspozycji 8 punktów.</b>";
+  document.querySelector("#Aside2").innerHTML = "";
+  // funkcja do ladowania tabelki danymi
+}
+
+/*function wywolanie_okna_talenty() {
+  fetch("tabel_talenty.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.querySelector("Aside1").innerHTML = data;
+    });
+}
+*/
 /*function wspoczynniki() {
   var nazwa_warosci_cechy = "wartosc_cechy_";
   nazwa_obrony = "obrona_";
