@@ -1324,13 +1324,42 @@ function wywolanie_okna_talenty() {
     .then((response) => response.text())
     .then((data) => {
       document.querySelector("#Aside1").innerHTML = data;
+
+      // tutaj odbywa sie wypelnianie tablki
+      // znajdź element tabeli o id "mytable"
+      var tabela = document.getElementById("mytable");
+
+      // znajdź komórkę w wierszu 1, kolumnie 1
+      var komorka = tabela.rows[1].cells[2];
+
+      // zmień zawartość komórki na "nowa wartość"
+      komorka.innerHTML = "nowa wartość";
+    });
+
+  // znajdź element main i ustaw jego zawartość
+  document.querySelector("main").innerHTML =
+    "<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br>Masz do dyspozycji 8 punktów.</b>";
+
+  // znajdź element o id "Aside2" i usuń jego zawartość
+  document.querySelector("#Aside2").innerHTML = "";
+}
+
+/*
+function wywolanie_okna_talenty() {
+  fetch("tabela_talenty.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.querySelector("#Aside1").innerHTML = data;
     });
   document.querySelector("main").innerHTML =
     "<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br>Masz do dyspozycji 8 punktów.</b>";
   document.querySelector("#Aside2").innerHTML = "";
-  // funkcja do ladowania tabelki danymi
-}
 
+}
+function laduj_Dane_do_Tabelki() {
+  document.getElementById("nazwa_Talent_1").innerHTML = "bla";
+}
+*/
 /*function wywolanie_okna_talenty() {
   fetch("tabel_talenty.html")
     .then((response) => response.text())
