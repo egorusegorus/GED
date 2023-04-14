@@ -31,7 +31,6 @@ const postac = []; //postac[0] = imie gracza
 //postac[30] = maksymalna Karma
 //postac[31] = !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Pancerz fiz
 
-var punkty_cechy = 66;
 function showDescription() {
   var radios = document.getElementsByName("dyscyplina");
   var value;
@@ -1326,14 +1325,6 @@ function wywolanie_okna_talenty() {
       document.querySelector("#Aside1").innerHTML = data;
 
       // tutaj odbywa sie wypelnianie tablki
-      // znajdź element tabeli o id "mytable"
-      var tabela = document.getElementById("mytable");
-
-      // znajdź komórkę w wierszu 1, kolumnie 1
-      var komorka = tabela.rows[1].cells[2];
-
-      // zmień zawartość komórki na "nowa wartość"
-      komorka.innerHTML = "nowa wartość";
     });
 
   // znajdź element main i ustaw jego zawartość
@@ -1342,6 +1333,240 @@ function wywolanie_okna_talenty() {
 
   // znajdź element o id "Aside2" i usuń jego zawartość
   document.querySelector("#Aside2").innerHTML = "";
+}
+function wypelnij_tabelke() {
+  var t1 = [];
+  //0- nazwa talentu
+  //1- stopien cechy
+  //2- dyscyplinarny
+  //3- karma
+  //4- wyczerpanie
+  var t2 = [];
+  var t3 = [];
+  var t4 = [];
+  var t5 = [];
+  var t6 = [];
+  var t7 = [];
+  if ((postac[2] = "Czarodziej")) {
+    t1[0] = "Czytanie/pisanie";
+    t1[1] = postac[13];
+    t1[2] = "T";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Czyt./pis. znak. mag.";
+    t3[1] = postac[13];
+    t2[2] = "T";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Matryca";
+    t3[1] = "-";
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Matryca";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Rytuał karmiczny";
+    t5[1] = "-";
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Rzucanie czarów";
+    t6[1] = postac[13];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = "N";
+    t7[0] = "Tkanie wątków";
+    t7[1] = postac[13];
+    t7[2] = "N";
+    t7[3] = "N";
+    t7[4] = "N";
+  } else if ((postac[2] = "Fechmistrz")) {
+    t1[0] = "Broń biała";
+    t1[1] = postac[11];
+    t1[2] = "T";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Manewr";
+    t3[1] = postac[13];
+    t2[2] = "T";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Prowokacja";
+    t3[1] = postac[15];
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Rytuał karmiczny";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Unik";
+    t5[1] = postac[11];
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Zachowanie równowagi";
+    t6[1] = postac[10];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = "N";
+  } else if ((postac[2] = "Iluzjonista")) {
+    t1[0] = "Czytanie/pisanie";
+    t1[1] = postac[13];
+    t1[2] = "N";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Czyt./pis. znak. mag.";
+    t3[1] = postac[13];
+    t2[2] = "N";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Matryca";
+    t3[1] = "-";
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Matryca";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Rytuał karmiczny";
+    t5[1] = "-";
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Rzucanie czarów";
+    t6[1] = postac[13];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = "N";
+    t7[0] = "Tkanie wątków";
+    t7[1] = postac[13];
+    t7[2] = "N";
+    t7[3] = "N";
+    t7[4] = "N";
+  } else if ((postac[2] = "Kawalerzysta")) {
+    t1[0] = "Broń biała";
+    t1[1] = postac[11];
+    t1[2] = "T";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Rytuał karmiczny";
+    t3[1] = "-";
+    t2[2] = "N";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Szarża";
+    t3[1] = postac[10];
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Więź ze zwierzęciem";
+    t4[1] = postac[15];
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Woltyżerka";
+    t5[1] = postac[11];
+    t5[2] = "T";
+    t5[3] = "N";
+    t5[4] = "N";
+  } else if ((postac[2] = "Powietrzny Łupieżca")) {
+    // tutaj kontynuowac
+  } else if ((postac[2] = "Trubadur")) {
+  } else if ((postac[2] = "Władca Zwierząt")) {
+  } else if ((postac[2] = "Wojownik")) {
+  } else if ((postac[2] = " Ksenomanta")) {
+    t1[0] = "Czytanie/pisanie";
+    t1[1] = postac[13];
+    t1[2] = "N";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Czyt./pis. znak. mag.";
+    t3[1] = postac[13];
+    t2[2] = "N";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Matryca";
+    t3[1] = "-";
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Matryca";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Rytuał karmiczny";
+    t5[1] = "-";
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Rzucanie czarów";
+    t6[1] = postac[13];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = "N";
+    t7[0] = "Tkanie wątków";
+    t7[1] = postac[13];
+    t7[2] = "N";
+    t7[3] = "N";
+    t7[4] = "N";
+  } else if ((postac[2] = " Łucznik")) {
+  } else if ((postac[2] = "Mistrz Żywiołów")) {
+    t1[0] = "Czytanie/pisanie";
+    t1[1] = postac[13];
+    t1[2] = "N";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Czyt./pis. znak. mag.";
+    t3[1] = postac[13];
+    t2[2] = "N";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Matryca";
+    t3[1] = "-";
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Matryca";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Rytuał karmiczny";
+    t5[1] = "-";
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Rzucanie czarów";
+    t6[1] = postac[13];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = "N";
+    t7[0] = "Tkanie wątków";
+    t7[1] = postac[13];
+    t7[2] = "N";
+    t7[3] = "N";
+    t7[4] = "N";
+  } else if ((postac[2] = " Zbrojmistrz")) {
+  } else if ((postac[2] = "Złodziej")) {
+  }
+
+  /*
+  // znajdź element tabeli o id "mytable"
+  var tabela = document.getElementById("mytable");
+
+  // znajdź komórkę w wierszu 1, kolumnie 1
+  var komorka = tabela.rows[1].cells[2];
+
+  // zmień zawartość komórki na "nowa wartość"
+  komorka.innerHTML = "nowa wartość";*/
 }
 
 /*
