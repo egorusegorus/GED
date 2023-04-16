@@ -1,3 +1,15 @@
+var t1 = [];
+//0- nazwa talentu
+//1- stopien cechy
+//2- dyscyplinarny
+//3- karma
+//4- wyczerpanie
+var t2 = [];
+var t3 = [];
+var t4 = [];
+var t5 = [];
+var t6 = [];
+var t7 = [];
 const postac = []; //postac[0] = imie gracza
 //postac[1] = imie postaci
 //postac[2] = Dyscyplina
@@ -1263,6 +1275,7 @@ function obrona() {
   zdrowie();
   pancerz_duchowy();
   karma();
+  wypelnij_tablice_talentow();
   wywolanie_okna_talenty();
 }
 function karma() {
@@ -1325,6 +1338,7 @@ function wywolanie_okna_talenty() {
       document.querySelector("#Aside1").innerHTML = data;
 
       // tutaj odbywa sie wypelnianie tablki
+      wypelnij_Tabelke();
     });
 
   // znajdź element main i ustaw jego zawartość
@@ -1334,20 +1348,8 @@ function wywolanie_okna_talenty() {
   // znajdź element o id "Aside2" i usuń jego zawartość
   document.querySelector("#Aside2").innerHTML = "";
 }
-function wypelnij_tabelke() {
-  var t1 = [];
-  //0- nazwa talentu
-  //1- stopien cechy
-  //2- dyscyplinarny
-  //3- karma
-  //4- wyczerpanie
-  var t2 = [];
-  var t3 = [];
-  var t4 = [];
-  var t5 = [];
-  var t6 = [];
-  var t7 = [];
-  if ((postac[2] = "Czarodziej")) {
+function wypelnij_tablice_talentow() {
+  if (postac[2] == "Czarodziej") {
     t1[0] = "Czytanie/pisanie";
     t1[1] = postac[13];
     t1[2] = "T";
@@ -1383,14 +1385,14 @@ function wypelnij_tabelke() {
     t7[2] = "N";
     t7[3] = "N";
     t7[4] = "N";
-  } else if ((postac[2] = "Fechmistrz")) {
+  } else if (postac[2] == "Fechmistrz") {
     t1[0] = "Broń biała";
     t1[1] = postac[11];
     t1[2] = "T";
     t1[3] = "N";
     t1[4] = "N";
     t2[0] = "Manewr";
-    t3[1] = postac[13];
+    t2[1] = postac[13];
     t2[2] = "T";
     t2[3] = "N";
     t2[4] = "N";
@@ -1414,14 +1416,14 @@ function wypelnij_tabelke() {
     t6[2] = "N";
     t6[3] = "N";
     t6[4] = "N";
-  } else if ((postac[2] = "Iluzjonista")) {
+  } else if (postac[2] == "Iluzjonista") {
     t1[0] = "Czytanie/pisanie";
     t1[1] = postac[13];
     t1[2] = "N";
     t1[3] = "N";
     t1[4] = "N";
     t2[0] = "Czyt./pis. znak. mag.";
-    t3[1] = postac[13];
+    t2[1] = postac[13];
     t2[2] = "N";
     t2[3] = "N";
     t2[4] = "N";
@@ -1450,14 +1452,14 @@ function wypelnij_tabelke() {
     t7[2] = "N";
     t7[3] = "N";
     t7[4] = "N";
-  } else if ((postac[2] = "Kawalerzysta")) {
+  } else if (postac[2] == "Kawalerzysta") {
     t1[0] = "Broń biała";
     t1[1] = postac[11];
     t1[2] = "T";
     t1[3] = "N";
     t1[4] = "N";
     t2[0] = "Rytuał karmiczny";
-    t3[1] = "-";
+    t2[1] = "-";
     t2[2] = "N";
     t2[3] = "N";
     t2[4] = "N";
@@ -1476,19 +1478,138 @@ function wypelnij_tabelke() {
     t5[2] = "T";
     t5[3] = "N";
     t5[4] = "N";
-  } else if ((postac[2] = "Powietrzny Łupieżca")) {
-    // tutaj kontynuowac
-  } else if ((postac[2] = "Trubadur")) {
-  } else if ((postac[2] = "Władca Zwierząt")) {
-  } else if ((postac[2] = "Wojownik")) {
-  } else if ((postac[2] = " Ksenomanta")) {
+  } else if (postac[2] == "Powietrzny Łupieżca") {
+    t1[0] = "Broń biała";
+    t1[1] = postac[11];
+    t1[2] = "T";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Ognista krew";
+    t2[1] = postac[12];
+    t2[2] = "T";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Okrzyk bojowy";
+    t3[1] = postac[15];
+    t3[2] = "T";
+    t3[3] = "N";
+    t3[4] = 1;
+    t4[0] = "Rytuał karmiczny";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Unik";
+    t5[1] = postac[11];
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = 1;
+    t6[0] = "Żeglarstwo powietrzne";
+    t6[1] = postac[14];
+    t6[2] = "T";
+    t6[3] = "N";
+    t6[4] = "N";
+  } else if (postac[2] == "Trubadur") {
+    t1[0] = "Broń biała";
+    t1[1] = postac[11];
+    t1[2] = "N";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Naśladowanie głosu";
+    t2[1] = postac[13];
+    t2[2] = "T";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Pierwsze wrażenie";
+    t3[1] = postac[15];
+    t3[2] = "N";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Pieśń uczuć";
+    t4[1] = postac[15];
+    t4[2] = "T";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Przebranie";
+    t5[1] = postac[13];
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = 1;
+    t6[0] = "Rytuał karmiczny";
+    t6[1] = "-";
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = "N";
+  } else if (postac[2] == "Władca Zwierząt") {
+    t1[0] = "Pazury";
+    t1[1] = parseInt(postac[10]) + 3;
+    t1[2] = "T";
+    t1[3] = "T";
+    t1[4] = "N";
+    t2[0] = "Rytuał karmiczny";
+    t2[1] = "-";
+    t2[2] = "N";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Tropienie";
+    t3[1] = postac[13];
+    t3[2] = "T";
+    t3[3] = "N";
+    t3[4] = 1;
+    t4[0] = "Walka wręcz";
+    t4[1] = postac[10];
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Więź ze zwierzęciem";
+    t5[1] = postac[15];
+    t5[2] = "T";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Zapanowanie na zwierzęciem";
+    t6[1] = postac[15];
+    t6[2] = "T";
+    t6[3] = "N";
+    t6[4] = 1;
+  } else if (postac[2] == "Wojownik") {
+    t1[0] = "Akrobatyczny atak";
+    t1[1] = postac[11];
+    t1[2] = "N";
+    t1[3] = "T";
+    t1[4] = "N";
+    t2[0] = "Broń biała";
+    t2[1] = postac[11];
+    t2[2] = "T";
+    t2[3] = "N";
+    t2[4] = "N";
+    t3[0] = "Drewniana skóra";
+    t3[1] = postac[12];
+    t3[2] = "T";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Powietrzny taniec";
+    t4[1] = postac[11];
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = 1;
+    t5[0] = "Rytuał karmiczny";
+    t5[1] = "-";
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Walka wręcz";
+    t6[1] = postac[11];
+    t6[2] = "T";
+    t6[3] = "N";
+    t6[4] = "N";
+  } else if (postac[2] == "Ksenomanta") {
     t1[0] = "Czytanie/pisanie";
     t1[1] = postac[13];
     t1[2] = "N";
     t1[3] = "N";
     t1[4] = "N";
     t2[0] = "Czyt./pis. znak. mag.";
-    t3[1] = postac[13];
+    t2[1] = postac[13];
     t2[2] = "N";
     t2[3] = "N";
     t2[4] = "N";
@@ -1517,15 +1638,45 @@ function wypelnij_tabelke() {
     t7[2] = "N";
     t7[3] = "N";
     t7[4] = "N";
-  } else if ((postac[2] = " Łucznik")) {
-  } else if ((postac[2] = "Mistrz Żywiołów")) {
+  } else if (postac[2] == "Łucznik") {
+    t1[0] = "Broń strzelecka";
+    t1[1] = postac[11];
+    t1[2] = "T";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Celny strzał";
+    t2[1] = postac[11];
+    t2[2] = "N";
+    t2[3] = "T";
+    t2[4] = "N";
+    t3[0] = "Mistyczny znak";
+    t3[1] = postac[13];
+    t3[2] = "T";
+    t3[3] = "N";
+    t3[4] = 1;
+    t4[0] = "Rytuał karmiczny";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Strzała kierunku";
+    t5[1] = postac[13];
+    t5[2] = "T";
+    t5[3] = "N";
+    t5[4] = 4;
+    t6[0] = "Unik";
+    t6[1] = postac[11];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = 1;
+  } else if (postac[2] == "Mistrz Żywiołów") {
     t1[0] = "Czytanie/pisanie";
     t1[1] = postac[13];
     t1[2] = "N";
     t1[3] = "N";
     t1[4] = "N";
     t2[0] = "Czyt./pis. znak. mag.";
-    t3[1] = postac[13];
+    t2[1] = postac[13];
     t2[2] = "N";
     t2[3] = "N";
     t2[4] = "N";
@@ -1554,8 +1705,73 @@ function wypelnij_tabelke() {
     t7[2] = "N";
     t7[3] = "N";
     t7[4] = "N";
-  } else if ((postac[2] = " Zbrojmistrz")) {
-  } else if ((postac[2] = "Złodziej")) {
+  } else if (postac[2] == "Zbrojmistrz") {
+    t1[0] = "Broń biała";
+    t1[1] = postac[11];
+    t1[2] = "N";
+    t1[3] = "N";
+    t1[4] = "N";
+    t2[0] = "Historia broni";
+    t2[1] = postac[13];
+    t2[2] = "T";
+    t2[3] = "T";
+    t2[4] = "N";
+    t3[0] = "Przekucie ostrza";
+    t3[1] = postac[13];
+    t3[2] = "NT";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Rytuał karmiczny";
+    t4[1] = "-";
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Umysł ze stali";
+    t5[1] = postac[14];
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = 1;
+    t6[0] = "Unik";
+    t6[1] = postac[11];
+    t6[2] = "N";
+    t6[3] = "N";
+    t6[4] = 1;
+  } else if (postac[2] == "Złodziej") {
+    t1[0] = "Atak z zaskoczenia";
+    t1[1] = postac[11];
+    t1[2] = "T";
+    t1[3] = "T";
+    t1[4] = "N";
+    t2[0] = "Broń biała";
+    t2[1] = postac[11];
+    t2[2] = "N";
+    t2[3] = "T";
+    t2[4] = "N";
+    t3[0] = "Kradzież kieszonkowa";
+    t3[1] = postac[11];
+    t3[2] = "T";
+    t3[3] = "N";
+    t3[4] = "N";
+    t4[0] = "Magiczny wytrych";
+    t4[1] = postac[11];
+    t4[2] = "N";
+    t4[3] = "N";
+    t4[4] = "N";
+    t5[0] = "Rytuał karmiczny";
+    t5[1] = "-";
+    t5[2] = "N";
+    t5[3] = "N";
+    t5[4] = "N";
+    t6[0] = "Skradanie się";
+    t6[1] = postac[11];
+    t6[2] = "T";
+    t6[3] = "N";
+    t6[4] = "N";
+    t7[0] = "Skradanie się";
+    t7[1] = postac[11];
+    t7[2] = "T";
+    t7[3] = "N";
+    t7[4] = "N";
   }
 
   /*
@@ -1568,7 +1784,85 @@ function wypelnij_tabelke() {
   // zmień zawartość komórki na "nowa wartość"
   komorka.innerHTML = "nowa wartość";*/
 }
+function wypelnij_Tabelke() {
+  document.getElementById("nazwa_Talent_1").innerHTML = t1[0];
+  document.getElementById("nazwa_Talent_2").innerHTML = t2[0];
+  document.getElementById("nazwa_Talent_3").innerHTML = t3[0];
+  document.getElementById("nazwa_Talent_4").innerHTML = t4[0];
+  document.getElementById("nazwa_Talent_5").innerHTML = t5[0];
+  document.getElementById("nazwa_Talent_6").innerHTML = t6[0];
+  document.getElementById("nazwa_Talent_7").innerHTML = t7[0];
 
+  document.getElementById("cecha_Talent_1").innerHTML = t1[1];
+  document.getElementById("cecha_Talent_2").innerHTML = t2[1];
+  document.getElementById("cecha_Talent_3").innerHTML = t3[1];
+  document.getElementById("cecha_Talent_4").innerHTML = t4[1];
+  document.getElementById("cecha_Talent_5").innerHTML = t5[1];
+  document.getElementById("cecha_Talent_6").innerHTML = t6[1];
+  document.getElementById("cecha_Talent_7").innerHTML = t7[1];
+
+  document.getElementById("suma_Talent_1").innerHTML = t1[1];
+  document.getElementById("suma_Talent_2").innerHTML = t2[1];
+  document.getElementById("suma_Talent_3").innerHTML = t3[1];
+  document.getElementById("suma_Talent_4").innerHTML = t4[1];
+  document.getElementById("suma_Talent_5").innerHTML = t5[1];
+  document.getElementById("suma_Talent_6").innerHTML = t6[1];
+  document.getElementById("suma_Talent_7").innerHTML = t7[1];
+
+  document.getElementById("kostki_Talent_1").innerHTML = "K0";
+  document.getElementById("kostki_Talent_2").innerHTML = "K0";
+  document.getElementById("kostki_Talent_3").innerHTML = "K0";
+  document.getElementById("kostki_Talent_4").innerHTML = "K0";
+  document.getElementById("kostki_Talent_5").innerHTML = "K0";
+  document.getElementById("kostki_Talent_6").innerHTML = "K0";
+  document.getElementById("kostki_Talent_7").innerHTML = "K0";
+
+  document.getElementById("dysc_Talent_1").innerHTML = t1[2];
+  document.getElementById("dysc_Talent_2").innerHTML = t2[2];
+  document.getElementById("dysc_Talent_3").innerHTML = t3[2];
+  document.getElementById("dysc_Talent_4").innerHTML = t4[2];
+  document.getElementById("dysc_Talent_5").innerHTML = t5[2];
+  document.getElementById("dysc_Talent_6").innerHTML = t6[2];
+  document.getElementById("dysc_Talent_7").innerHTML = t7[2];
+
+  document.getElementById("karma_Talent_1").innerHTML = t1[3];
+  document.getElementById("karma_Talent_2").innerHTML = t2[3];
+  document.getElementById("karma_Talent_3").innerHTML = t3[3];
+  document.getElementById("karma_Talent_4").innerHTML = t4[3];
+  document.getElementById("karma_Talent_5").innerHTML = t5[3];
+  document.getElementById("karma_Talent_6").innerHTML = t6[3];
+  document.getElementById("karma_Talent_7").innerHTML = t7[3];
+
+  document.getElementById("wyczerpanie_Talent_1").innerHTML = t1[4];
+  document.getElementById("wyczerpanie_Talent_2").innerHTML = t2[4];
+  document.getElementById("wyczerpanie_Talent_3").innerHTML = t3[4];
+  document.getElementById("wyczerpanie_Talent_4").innerHTML = t4[4];
+  document.getElementById("wyczerpanie_Talent_5").innerHTML = t5[4];
+  document.getElementById("wyczerpanie_Talent_6").innerHTML = t6[4];
+  document.getElementById("wyczerpanie_Talent_7").innerHTML = t7[4];
+}
+
+/*if (t6[0] === undefined) {
+    t6[0] = " ";
+    t6[1] = " ";
+    t6[2] = " ";
+    t6[3] = " ";
+    t6[4] = " ";
+    const selectElement = document.getElementById("t6");
+    selectElement.style.visibility = "hidden";
+
+    t7[0] = " ";
+    t7[1] = " ";
+    t7[2] = " ";
+    t7[3] = " ";
+    t7[4] = " ";
+  } else if (t7[0] === undefined) {
+    t7[0] = " ";
+    t7[1] = " ";
+    t7[2] = " ";
+    t7[3] = " ";
+    t7[4] = " ";
+  }*/
 /*
 function wywolanie_okna_talenty() {
   fetch("tabela_talenty.html")
