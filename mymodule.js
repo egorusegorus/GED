@@ -1339,6 +1339,12 @@ function wywolanie_okna_talenty() {
 
       // tutaj odbywa sie wypelnianie tablki
       wypelnij_Tabelke();
+      if (t6[0] == " ") {
+        document.getElementById("t6").style.display = "none";
+        document.getElementById("t7").style.display = "none";
+      } else if (t7[0] == " ") {
+        document.getElementById("t7").style.display = "none";
+      }
     });
 
   // znajdź element main i ustaw jego zawartość
@@ -1785,6 +1791,24 @@ function wypelnij_tablice_talentow() {
   komorka.innerHTML = "nowa wartość";*/
 }
 function wypelnij_Tabelke() {
+  if (t6[0] === undefined) {
+    t6[0] = " ";
+    t6[1] = " ";
+    t6[2] = " ";
+    t6[3] = " ";
+    t6[4] = " ";
+    t7[0] = " ";
+    t7[1] = " ";
+    t7[2] = " ";
+    t7[3] = " ";
+    t7[4] = " ";
+  } else if (t7[0 === undefined]) {
+    t7[0] = " ";
+    t7[1] = " ";
+    t7[2] = " ";
+    t7[3] = " ";
+    t7[4] = " ";
+  }
   document.getElementById("nazwa_Talent_1").innerHTML = t1[0];
   document.getElementById("nazwa_Talent_2").innerHTML = t2[0];
   document.getElementById("nazwa_Talent_3").innerHTML = t3[0];
@@ -1840,6 +1864,12 @@ function wypelnij_Tabelke() {
   document.getElementById("wyczerpanie_Talent_5").innerHTML = t5[4];
   document.getElementById("wyczerpanie_Talent_6").innerHTML = t6[4];
   document.getElementById("wyczerpanie_Talent_7").innerHTML = t7[4];
+  if (t6[0] == " ") {
+    document.getElementById("kostki_Talent_6").innerHTML = " ";
+    document.getElementById("kostki_Talent_7").innerHTML = " ";
+  } else if (t7[0] == " ") {
+    document.getElementById("kostki_Talent_7").innerHTML = " ";
+  }
 }
 
 /*if (t6[0] === undefined) {
