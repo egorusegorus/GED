@@ -1347,11 +1347,9 @@ function wywolanie_okna_talenty() {
       }
     });
 
-  // znajdź element main i ustaw jego zawartość
   document.querySelector("main").innerHTML =
-    "<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br>Masz do dyspozycji 8 punktów.</b>";
+    '<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br></br>Masz do dyspozycji: </br> <label id="punkty_Na_talenty"> 8 </label>punktów.</b>';
 
-  // znajdź element o id "Aside2" i usuń jego zawartość
   document.querySelector("#Aside2").innerHTML = "";
 }
 function wypelnij_tablice_talentow() {
@@ -1773,9 +1771,9 @@ function wypelnij_tablice_talentow() {
     t6[2] = "T";
     t6[3] = "N";
     t6[4] = "N";
-    t7[0] = "Skradanie się";
+    t7[0] = "Wspinaczka";
     t7[1] = postac[11];
-    t7[2] = "T";
+    t7[2] = "N";
     t7[3] = "N";
     t7[4] = "N";
   }
@@ -1802,7 +1800,7 @@ function wypelnij_Tabelke() {
     t7[2] = " ";
     t7[3] = " ";
     t7[4] = " ";
-  } else if (t7[0 === undefined]) {
+  } else if (t7[0] === undefined) {
     t7[0] = " ";
     t7[1] = " ";
     t7[2] = " ";
@@ -1867,11 +1865,86 @@ function wypelnij_Tabelke() {
   if (t6[0] == " ") {
     document.getElementById("kostki_Talent_6").innerHTML = " ";
     document.getElementById("kostki_Talent_7").innerHTML = " ";
-  } else if (t7[0] == " ") {
+  }
+  if (t7[0] == " ") {
     document.getElementById("kostki_Talent_7").innerHTML = " ";
   }
 }
+function kostki_Akcji_od_Stopnia(stopien) {
+  var kostki;
+  if (stopien == 1) {
+    kostki = "1k4-2";
+  } else if (stopien == 2) {
+    kostki = "1k4-1";
+  } else if (stopien == 3) {
+    kostki = "1k4";
+  } else if (stopien == 4) {
+    kostki = "1k6";
+  } else if (stopien == 5) {
+    kostki = "1k8";
+  } else if (stopien == 6) {
+    kostki = "1k10";
+  } else if (stopien == 7) {
+    kostki = "1k12";
+  } else if (stopien == 8) {
+    kostki = "2K6";
+  } else if (stopien == 9) {
+    kostki = "1k8+K6";
+  } else if (stopien == 10) {
+    kostki = "1k10+K6";
+  } else if (stopien == 11) {
+    kostki = "1k10+K8";
+  }
+  return kostki;
+}
 
+function stopien_Talentu() {
+  const a = "kostki_Talent_";
+  const e = "suma_Talent_";
+  var b;
+  var c;
+  var d;
+  var f;
+  if (t6 === " " || t6[0] === " ") {
+    b = 5;
+  } else if (t7 === " " || t7[0] === " ") {
+    b = 6;
+  } else {
+    b = 7;
+  }
+  for (var i = 1; i <= b; i++) {
+    c = a + i;
+    d = e + i;
+    f = document.getElementById(d).textContent;
+    document.getElementById(c).innerHTML = kostki_Akcji_od_Stopnia(f);
+  }
+}
+
+/*function stopien_Talentu() {
+  const a = "kostki_Talent_";
+  const e = "suma_Talent_";
+  var b;
+  var c;
+  var d;
+  if (t6[0] === undefined) {
+    b = 5;
+  } else if (t7[0] === undefined) {
+    b = 6;
+  } else {
+    b = 7;
+  }
+  for (var i = 1; (i = b); i++) {
+    c = a + i;
+    d = e + i;
+    document.getElementById(c).innerHTML = kostki_Akcji_od_Stopnia(d);
+  }
+}*/
+function oblicz_punkty() {
+  var punkty = document.getElementById("punkty_Na_talenty").innerHTML;
+  // tutaj liczyc
+  stopien_Talentu();
+  document.getElementById("Aside2").innerHTML = punkty;
+}
 /*if (t6[0] === undefined) {
     t6[0] = " ";
     t6[1] = " ";

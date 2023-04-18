@@ -20,27 +20,28 @@
     <table id="mytable">
       <thead>
         <tr>
-          <th>Talenty</th>
-          <th>Poziom</th>
-          <th>Stopień cechy</th>
-          <th>Stopień talentu</th>
-          <th>Kostki akcji</th>
-          <th>Dysc.</th>
-          <th>Karma</th>
-          <th>Wyczerpanie</th>
+          <th><center>Talenty</center></th>
+          <th style="margin-left: 15px">Poziom</th>
+          <th style="margin-left: 10px">Stopień cechy</th>
+          <th style="margin-left: 10px">Stopień talentu</th>
+          <th style="margin-left: 10px">Kostki akcji</th>
+          <th style="margin-left: 10px">Dysc.</th>
+          <th style="margin-left: 10px">Karma</th>
+          <th style="margin-left: 10px">Wyczerpanie</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td id="nazwa_Talent_1"></td>
           <td>
-            <select name="t1" id="t1">
+            <select name="t1" id="t1" onchange="oblicz_punkty()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
           </td>
+
           <td id="cecha_Talent_1"></td>
           <td id="suma_Talent_1"></td>
           <td id="kostki_Talent_1"></td>
