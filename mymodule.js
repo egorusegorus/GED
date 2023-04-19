@@ -1348,7 +1348,7 @@ function wywolanie_okna_talenty() {
     });
 
   document.querySelector("main").innerHTML =
-    '<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br></br>Masz do dyspozycji: </br> <label id="punkty_Na_talenty"> 8 </label>punktów.</b>';
+    '<b>Poziom 1 - Koszt: 1 punkt<br>Poziom 2 - Koszt: 2 punkty<br>Poziom 3 - Koszt: 3 punkty </br></br>Masz do dyspozycji:<br> <label id="punkty_Na_talenty"> 8 </label>punktów.</br></br><button id="idziemy_Do_umiejetnosci" onClick=idziemy_Do_umiejetnosci() style="display:none;">Dalej</button></b>';
 
   document.querySelector("#Aside2").innerHTML = "";
 }
@@ -1360,7 +1360,7 @@ function wypelnij_tablice_talentow() {
     t1[3] = "N";
     t1[4] = "N";
     t2[0] = "Czyt./pis. znak. mag.";
-    t3[1] = postac[13];
+    t2[1] = postac[13];
     t2[2] = "T";
     t2[3] = "N";
     t2[4] = "N";
@@ -1777,16 +1777,6 @@ function wypelnij_tablice_talentow() {
     t7[3] = "N";
     t7[4] = "N";
   }
-
-  /*
-  // znajdź element tabeli o id "mytable"
-  var tabela = document.getElementById("mytable");
-
-  // znajdź komórkę w wierszu 1, kolumnie 1
-  var komorka = tabela.rows[1].cells[2];
-
-  // zmień zawartość komórki na "nowa wartość"
-  komorka.innerHTML = "nowa wartość";*/
 }
 function wypelnij_Tabelke() {
   if (t6[0] === undefined) {
@@ -1894,6 +1884,16 @@ function kostki_Akcji_od_Stopnia(stopien) {
     kostki = "1k10+K6";
   } else if (stopien == 11) {
     kostki = "1k10+K8";
+  } else if (stopien == 12) {
+    kostki = "2K10";
+  } else if (stopien == 13) {
+    kostki = "1K12+1K10";
+  } else if (stopien == 14) {
+    kostki = "K20+K4";
+  } else if (stopien == 15) {
+    kostki = "K20+K6";
+  } else if (stopien == 0) {
+    kostki = "K0";
   }
   return kostki;
 }
@@ -1901,24 +1901,83 @@ function kostki_Akcji_od_Stopnia(stopien) {
 function stopien_Talentu() {
   const a = "kostki_Talent_";
   const e = "suma_Talent_";
+  const h = "t";
+  const k = "cecha_Talent_";
   var b;
   var c;
   var d;
   var f;
+  var g;
+  var j;
+  var l;
+  var m;
   if (t6 === " " || t6[0] === " ") {
-    b = 5;
+    b = 5; // b- ile talentow jest w tabeli
   } else if (t7 === " " || t7[0] === " ") {
     b = 6;
   } else {
     b = 7;
   }
   for (var i = 1; i <= b; i++) {
-    c = a + i;
-    d = e + i;
-    f = document.getElementById(d).textContent;
+    c = a + i; //nazwa id dla kostek
+    d = e + i; //nazwa id dla stopnia cechy
+    g = h + i; //nazwa elementu select
+    l = k + i; //nazwa sumy
+    g = parseInt(document.getElementById(g).value); //wartosc elementu select
+    // m = parseInt(document.getElementById(l).textContent); //wartosc cechy
+    m = document.getElementById(l).textContent;
+    if (m === "-") {
+      m = 0;
+    } else {
+      m = parseInt(m);
+    }
+
+    j = parseInt(m + g); //suma poziom z select tx + wartosc cechy
+    document.getElementById(d).innerHTML = j; //wyswietl wartosc dla sumy
+    f = document.getElementById(d).textContent; //wartosc dla stopnia cechy wg.id
+
     document.getElementById(c).innerHTML = kostki_Akcji_od_Stopnia(f);
   }
 }
+
+function oblicz_punkty() {
+  var punkty = document.getElementById("punkty_Na_talenty").innerHTML;
+  var liczba_Talentow;
+  const nazwa_Select_bez_Index = "t";
+  var nazwa_Select;
+  var wartosc_Select;
+  var suma_Wartosci_select = 0;
+  if (t6[0] === " ") {
+    liczba_Talentow = 5; // b- ile talentow jest w tabeli
+  } else if (t7[0] === " ") {
+    liczba_Talentow = 6;
+  } else {
+    liczba_Talentow = 7;
+  }
+  for (var i = 1; i <= liczba_Talentow; i++) {
+    nazwa_Select = nazwa_Select_bez_Index + i;
+    wartosc_Select = parseInt(document.getElementById(nazwa_Select).value);
+    suma_Wartosci_select = suma_Wartosci_select + wartosc_Select;
+  }
+  document.getElementById("punkty_Na_talenty").innerHTML =
+    8 - suma_Wartosci_select;
+  if (document.getElementById("punkty_Na_talenty").textContent === "0") {
+    document.getElementById("idziemy_Do_umiejetnosci").style.display = "block";
+  } else {
+    document.getElementById("idziemy_Do_umiejetnosci").style.display = "none";
+  }
+  // tutaj liczyc
+  stopien_Talentu();
+}
+/*
+  // znajdź element tabeli o id "mytable"
+  var tabela = document.getElementById("mytable");
+
+  // znajdź komórkę w wierszu 1, kolumnie 1
+  var komorka = tabela.rows[1].cells[2];
+
+  // zmień zawartość komórki na "nowa wartość"
+  komorka.innerHTML = "nowa wartość";*/
 
 /*function stopien_Talentu() {
   const a = "kostki_Talent_";
@@ -1939,12 +1998,7 @@ function stopien_Talentu() {
     document.getElementById(c).innerHTML = kostki_Akcji_od_Stopnia(d);
   }
 }*/
-function oblicz_punkty() {
-  var punkty = document.getElementById("punkty_Na_talenty").innerHTML;
-  // tutaj liczyc
-  stopien_Talentu();
-  document.getElementById("Aside2").innerHTML = punkty;
-}
+
 /*if (t6[0] === undefined) {
     t6[0] = " ";
     t6[1] = " ";
