@@ -4,6 +4,8 @@ var t1 = [];
 //2- dyscyplinarny
 //3- karma
 //4- wyczerpanie
+//5- poziom talentu
+//6- kostki akcji
 var t2 = [];
 var t3 = [];
 var t4 = [];
@@ -1934,9 +1936,32 @@ function stopien_Talentu() {
 
     j = parseInt(m + g); //suma poziom z select tx + wartosc cechy
     document.getElementById(d).innerHTML = j; //wyswietl wartosc dla sumy
+
     f = document.getElementById(d).textContent; //wartosc dla stopnia cechy wg.id
 
     document.getElementById(c).innerHTML = kostki_Akcji_od_Stopnia(f);
+    if (i == 1) {
+      t1[5] = j;
+      t1[6] = document.getElementById(c).textContent;
+    } else if (i == 2) {
+      t2[5] = j;
+      t2[6] = document.getElementById(c).textContent;
+    } else if (i == 3) {
+      t3[5] = j;
+      t3[6] = document.getElementById(c).textContent;
+    } else if (i == 4) {
+      t4[5] = j;
+      t4[6] = document.getElementById(c).textContent;
+    } else if (i == 5) {
+      t5[5] = j;
+      t5[6] = document.getElementById(c).textContent;
+    } else if (i == 6) {
+      t6[5] = j;
+      t6[6] = document.getElementById(c).textContent;
+    } else if (i == 7) {
+      t7[5] = j;
+      t7[6] = document.getElementById(c).textContent;
+    }
   }
 }
 
