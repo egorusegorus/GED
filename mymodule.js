@@ -1861,6 +1861,7 @@ function wypelnij_Tabelke() {
   if (t7[0] == " ") {
     document.getElementById("kostki_Talent_7").innerHTML = " ";
   }
+  ktory_Select_zostal_klikniety();
 }
 function kostki_Akcji_od_Stopnia(stopien) {
   var kostki;
@@ -1994,6 +1995,780 @@ function oblicz_punkty() {
   // tutaj liczyc
   stopien_Talentu();
 }
+
+function ktory_Select_zostal_klikniety() {
+  const selects = document.querySelectorAll("select");
+  selects.forEach((select) => {
+    select.addEventListener("change", (event) => {
+      const selectedValue = event.target.value;
+      const selectedId = event.target.id;
+      console.log("Selected ID: ", selectedId); // add this line to check if the function is being called
+      laduj_Opis_talentu_Do_Aside2(selectedId); // call the function with the selected ID
+    });
+  });
+}
+
+function laduj_Opis_talentu_Do_Aside2(id_select) {
+  var dyscyplina = postac[2];
+  var a, b, c, d, e, f, g;
+
+  if (
+    dyscyplina === "Czarodziej" ||
+    dyscyplina === "Iluzjonista" ||
+    dyscyplina === "Ksenomanta" ||
+    dyscyplina === "Mistrz Żywiołów"
+  ) {
+    // ladowanie danych z pliku
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("czyt-pis").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("czyt-pis-znak-mag").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("matryca").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("matryca").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rzucanie-czarow").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t7") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("tkanie-watkow").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Fechmistrz") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("manewr").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("prowokacja").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(
+            "zachowanie-równowagi"
+          ).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Kawalerzysta") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("szarża").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(
+            "więź-ze-zwierzęciem"
+          ).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("woltyżerka").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Powietrzny Łupieżca") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("ognista-krew").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("okrzyk-bojowy").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(
+            "Żeglarstwo-powietrzne"
+          ).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Trubadur") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("naśladowanie-głosu").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("pierwsze-wrażenie").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("pieśń-uczuć").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("przebranie").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Władca Zwierząt") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("pazury").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("tropienie").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("walka-wręcz").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(
+            "więź-ze-zwierzęciem"
+          ).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(
+            "zapanowanie-nad-zwierzęciem"
+          ).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Wojownik") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("akrobatyczny-atak").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("drewniana-skóra").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("powietrzny taniec").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("walka-wręcz").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Łucznik") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-strzelecka").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("celny-strzał").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("mistyczny-znak").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("strzała-kierunku").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Zbrojmistrz") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("historia-broni").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("przekucie-ostrza").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("umysł-ze-stali").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  } else if (dyscyplina === "Złodziej") {
+    if (id_select == "t1") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("atak-z-zaskoczenia").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t2") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("broń-biała").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t3") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(
+            "kradzież-kieszonkowa"
+          ).innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t4") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("magiczny-wytrych").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t5") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("rytual-karmiczny").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t6") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("skradanie-się").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    } else if (id_select == "t7") {
+      fetch("opis_talentow.html")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku =
+            htmlDocument.getElementById("wspinaczka").innerHTML;
+          console.log("Description text: " + tekstZPliku);
+
+          document.getElementById("Aside2").innerHTML = tekstZPliku;
+        });
+    }
+  }
+}
+
 /*
   // znajdź element tabeli o id "mytable"
   var tabela = document.getElementById("mytable");
