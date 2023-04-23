@@ -1350,7 +1350,7 @@ function wywolanie_okna_talenty() {
     });
 
   document.querySelector("main").innerHTML =
-    '<b>Poziom 1 - Koszt: 1 punkt<br>Poziom 2 - Koszt: 2 punkty<br>Poziom 3 - Koszt: 3 punkty </br></br>Masz do dyspozycji:<br> <label id="punkty_Na_talenty"> 8 </label>punktów.</br></br><button id="idziemy_Do_umiejetnosci" onClick=idziemy_Do_umiejetnosci() style="display:none;">Dalej</button></b>';
+    '<b>Poziom 1 - Koszt: 1 punkt<br>Poziom 2 - Koszt: 2 punkty<br>Poziom 3 - Koszt: 3 punkty </br></br>Masz do dyspozycji:<br> <label id="punkty_Na_talenty"> 8 </label>punktów.</br></br><button id="idziemy_Do_umiejetnosci" onClick="idziemy_Do_umiejetnosci()" style="display:none;">Dalej</button></b>';
 
   document.querySelector("#Aside2").innerHTML = "";
 }
@@ -2767,6 +2767,12 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
         });
     }
   }
+}
+
+function idziemy_Do_umiejetnosci() {
+  document.getElementById("main").innerHTML = "a";
+  document.getElementById("Aside1").innerHTML = "b";
+  document.getElementById("Aside2").innerHTML = "c";
 }
 
 /*
