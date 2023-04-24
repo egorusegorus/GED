@@ -2770,9 +2770,28 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
 }
 
 function idziemy_Do_umiejetnosci() {
-  document.getElementById("main").innerHTML = "a";
-  document.getElementById("Aside1").innerHTML = "b";
-  document.getElementById("Aside2").innerHTML = "c";
+  fetch("umiejetnosci.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+      const tekstZPliku = htmlDocument.getElementById(
+        "umiejetnosci_Poczatkowe"
+      ).innerHTML;
+      const tekstZPliku2 = htmlDocument.getElementById(
+        "umiejetnosci_Wiedza"
+      ).innerHTML;
+      const tekstZPliku3 = htmlDocument.getElementById(
+        "umiejetnosci_Artystyczne"
+      ).innerHTML;
+      const tekstZPliku4 = htmlDocument.getElementById("punkty").innerHTML;
+
+      document.getElementById("Aside1").style.marginLeft = "40px";
+      document.getElementById("main").innerHTML = tekstZPliku;
+
+      document.getElementById("Aside1").innerHTML = tekstZPliku2 + tekstZPliku3;
+      document.getElementById("Aside2").innerHTML = tekstZPliku4;
+    });
 }
 
 /*
