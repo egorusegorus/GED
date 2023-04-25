@@ -44,6 +44,12 @@ const postac = []; //postac[0] = imie gracza
 //postac[29] = poczatkowa Karma
 //postac[30] = maksymalna Karma
 //postac[31] = !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Pancerz fiz
+//postac[32] = nazwa umiejetnosci wiedzy
+//postac[33] = wartosc umiejetnosci
+//postac[34] = nazwa umiejetnosci wiedzy  !!! moze byc undefined
+//postac[35] = wartosc umiejetnosci       !!! moze byc undefined
+//postac[36] = nazwa umiejetnosci artystycznej
+//postac[37] = wartos umiejetnosci artystycznej
 
 function showDescription() {
   var radios = document.getElementsByName("dyscyplina");
@@ -2794,223 +2800,89 @@ function idziemy_Do_umiejetnosci() {
     });
 }
 
-/*
-  // znajdź element tabeli o id "mytable"
-  var tabela = document.getElementById("mytable");
+function oblicz_punkty_umiejetnosci() {
+  var punkty_wiedzy = 0;
+  var punkty_artystyczne = 0;
+  var nazwa_punktow_uw;
+  var nazwa_punktow_ua;
+  const nazwa_uw = "uw";
+  const nazwa_ua = "ua";
+  for (var i = 1; i <= 15; i++) {
+    nazwa_punktow_uw = nazwa_uw + i;
+    punkty_wiedzy += parseInt(document.getElementById(nazwa_punktow_uw).value);
+  }
 
-  // znajdź komórkę w wierszu 1, kolumnie 1
-  var komorka = tabela.rows[1].cells[2];
+  punkty_wiedzy = 2 - punkty_wiedzy;
+  document.getElementById("punkty_wiedza").textContent = punkty_wiedzy;
 
-  // zmień zawartość komórki na "nowa wartość"
-  komorka.innerHTML = "nowa wartość";*/
-
-/*function stopien_Talentu() {
-  const a = "kostki_Talent_";
-  const e = "suma_Talent_";
-  var b;
-  var c;
-  var d;
-  if (t6[0] === undefined) {
-    b = 5;
-  } else if (t7[0] === undefined) {
-    b = 6;
+  for (var i = 1; i <= 9; i++) {
+    nazwa_punktow_ua = nazwa_ua + i;
+    punkty_artystyczne += parseInt(
+      document.getElementById(nazwa_punktow_ua).value
+    );
+  }
+  punkty_artystyczne = 1 - punkty_artystyczne;
+  document.getElementById("punkty_artystyczne").textContent =
+    punkty_artystyczne;
+  if (punkty_wiedzy == 0 && punkty_artystyczne == 0) {
+    document.getElementById("umiejetnosci_Gotowe").style.display = "block";
   } else {
-    b = 7;
+    document.getElementById("umiejetnosci_Gotowe").style.display = "none";
   }
-  for (var i = 1; (i = b); i++) {
-    c = a + i;
-    d = e + i;
-    document.getElementById(c).innerHTML = kostki_Akcji_od_Stopnia(d);
-  }
-}*/
-
-/*if (t6[0] === undefined) {
-    t6[0] = " ";
-    t6[1] = " ";
-    t6[2] = " ";
-    t6[3] = " ";
-    t6[4] = " ";
-    const selectElement = document.getElementById("t6");
-    selectElement.style.visibility = "hidden";
-
-    t7[0] = " ";
-    t7[1] = " ";
-    t7[2] = " ";
-    t7[3] = " ";
-    t7[4] = " ";
-  } else if (t7[0] === undefined) {
-    t7[0] = " ";
-    t7[1] = " ";
-    t7[2] = " ";
-    t7[3] = " ";
-    t7[4] = " ";
-  }*/
-/*
-function wywolanie_okna_talenty() {
-  fetch("tabela_talenty.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.querySelector("#Aside1").innerHTML = data;
-    });
-  document.querySelector("main").innerHTML =
-    "<b>Poziom 1 - Koszt: 1 punkt</br>Poziom 2 - Koszt: 2 punkty</br> Poziom 3 - Koszt: 3 punkty </br>Masz do dyspozycji 8 punktów.</b>";
-  document.querySelector("#Aside2").innerHTML = "";
-
 }
-function laduj_Dane_do_Tabelki() {
-  document.getElementById("nazwa_Talent_1").innerHTML = "bla";
-}
-*/
-/*function wywolanie_okna_talenty() {
-  fetch("tabel_talenty.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.querySelector("Aside1").innerHTML = data;
-    });
-}
-*/
-/*function wspoczynniki() {
-  var nazwa_warosci_cechy = "wartosc_cechy_";
-  nazwa_obrony = "obrona_";
-  var wartosc_cechy_ZR;
-  var wartosc_cechy_SW;
-  var wartosc_cechy_CHAR;
-  var obrana_fiz;
-  var obrana_mag;
-  var obrana_spol;
-  var wartosc_cechy;
-  var obrona;
-  if (wartosc_cechy == 1) {
-    obrona = 2;
-  } else if (wartosc_cechy == 2 || wartosc_cechy == 3) {
-    obrona = 3;
-  } else if (wartosc_cechy == 4 || wartosc_cechy == 5 || wartosc_cechy == 6) {
-    obrona = 4;
-  } else if (wartosc_cechy == 7 || wartosc_cechy == 8) {
-    obrona = 5;
-  } else if (wartosc_cechy == 9 || wartosc_cechy == 10) {
-    obrona = 6;
-  } else if (
-    wartosc_cechy == 11 ||
-    wartosc_cechy == 12 ||
-    wartosc_cechy == 13
+
+function dalej_Umiejetnosci_gotowe() {
+  zapis_Umiejetnosci_do_Tablicy();
+  if (
+    postac[2] === "Czarodziej" ||
+    postac[2] === "Iluzjonista" ||
+    postac[2] === "Ksenomanta" ||
+    postac[2] === "Mistrz Żywiołów"
   ) {
-    obrona = 7;
-  } else if (wartosc_cechy == 14 || wartosc_cechy == 15) {
-    obrona = 8;
-  } else if (wartosc_cechy == 16 || wartosc_cechy == 17) {
-    obrona = 9;
-  } else if (
-    wartosc_cechy == 18 ||
-    wartosc_cechy == 19 ||
-    wartosc_cechy == 20
-  ) {
-    obrona = 10;
-  } else if (wartosc_cechy == 21 || wartosc_cechy == 22) {
-    obrona = 11;
-  } else if (wartosc_cechy == 23 || wartosc_cechy == 24) {
-    obrona = 12;
-  } else if (
-    wartosc_cechy == 25 ||
-    wartosc_cechy == 26 ||
-    wartosc_cechy == 27
-  ) {
-    obrona = 13;
-  } else if (wartosc_cechy == 28 || wartosc_cechy == 29) {
-    obrona = 14;
-  } else if (wartosc_cechy == 30) {
-    obrona = 15;
+    laduj_liste_Czarow();
+  } else {
+    laduj_Sklep();
   }
 }
-*/
-/*
-function zmiana_Wartosci() {
-  const inputs = document.querySelectorAll("input[type='number']");
-  var nazwa_kliknietego_inputa;
-  var wartosc_kliknietego_inputa;
-  inputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      nazwa_kliknietego_inputa = event.target.id;
-      wartosc_kliknietego_inputa = document.getElementById(
-        nazwa_kliknietego_inputa
-      ).value;
 
-      var punkty = parseInt(
-        document.getElementById("punkty_Do_rozdania").textContent
-      );
-      document.getElementById("punkty_Do_rozdania").textContent =
-        punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
-      punkty = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
-    });
-  });
-  punkty_cechy = punkty_cechy - jaki_koszt(wartosc_kliknietego_inputa);
-  document.getElementById("Aside1").innerHTML = punkty_cechy;
-  // punkty = punkty - jaki_koszt(wartosc_kliknietego_inputa);
+function laduj_liste_Czarow() {
+  document.getElementById("main").innerHTML = "";
+  document.getElementById("Aside1").innerHTML = "";
+  document.getElementById("Aside2").innerHTML = "";
 }
-*/
-/*function ktory_spinner_zostal_zmieniony() {
-  const inputs = document.querySelectorAll("input[type='number']");
-  var nazwa_kliknietego_inputa;
-  inputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      nazwa_kliknietego_inputa = event.target.id;
-      var wartosc_kliknietego_inputa = document.getElementById(
-        nazwa_kliknietego_inputa
-      ).value;
-      document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
-    });
-  });
-}
-function wartosc_zmienionego_inputa() {
-  const inputs = document.querySelectorAll("input[type='number']");
-  var wartosc_kliknietego_inputa;
-  var nazwa_kliknietego_inputa = ktory_spinner_zostal_zmieniony();
-  inputs.forEach(function (input) {
-    input.addEventListener("change", function (event) {
-      wartosc_kliknietego_inputa = document.getElementById(
-        nazwa_kliknietego_inputa
-      ).value;
-      document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
-    });
-  });
-  document.getElementById("Aside1").innerHTML = wartosc_kliknietego_inputa;
-}
-*/
-/*
-function stopien_I_kostki_Akcji_wg_Wartosci_cechy() {
-  var wartosc_cechy;
-  var stopien;
-  var kostki_Akcji;
-  if (wartosc_cechy >= 2 && wartosc_cechy < 4) {
-    stopien = "2";
-    kostki_Akcji = "1K4-1";
-  } else if (wartosc_cechy >= 4 && wartosc_cechy < 7) {
-    stopien = "3";
-    kostki_Akcji = "1K4";
-  } else if (wartosc_cechy >= 7 && wartosc_cechy < 10) {
-    stopien = "4";
-    kostki_Akcji = "1K6";
-  } else if (wartosc_cechy >= 10 && wartosc_cechy < 13) {
-    stopien = "5";
-    kostki_Akcji = "1K8";
-  } else if (wartosc_cechy >= 13 && wartosc_cechy < 16) {
-    stopien = "6";
-    kostki_Akcji = "1K10";
-  } else if (wartosc_cechy >= 16 && wartosc_cechy < 19) {
-    stopien = "7";
-    kostki_Akcji = "1K12";
-  } else if (wartosc_cechy >= 19 && wartosc_cechy < 22) {
-    stopien = "8";
-    kostki_Akcji = "2K6";
-  } else if (wartosc_cechy >= 22 && wartosc_cechy < 25) {
-    stopien = "9";
-    kostki_Akcji = "1K8+1K6";
-  } else if (wartosc_cechy >= 25 && wartosc_cechy < 28) {
-    stopien = "10";
-    kostki_Akcji = "1K10+1K6";
-  } else if (wartosc_cechy >= 28 && wartosc_cechy < 30) {
-    stopien = "11";
-    kostki_Akcji = "1K10+1K8";
+function laduj_Sklep() {}
+
+function zapis_Umiejetnosci_do_Tablicy() {
+  const u_a = "u_a";
+  const u_w = "u_w";
+  const uw = "uw";
+  const ua = "ua";
+  var nazwa_u_a;
+  var nazwa_u_w;
+  var nazwa_uw;
+  var nazwa_ua;
+  var w_val;
+  var w_val2;
+
+  for (var i = 1; i <= 15; i++) {
+    nazwa_u_w = u_w + i;
+    nazwa_uw = uw + i;
+    w_val = document.getElementById(nazwa_uw).value;
+    if (w_val != 0 && postac[32] == undefined) {
+      postac[32] = document.getElementById(nazwa_u_w).textContent;
+      postac[33] = document.getElementById(nazwa_uw).value;
+    } else if (w_val != 0 && postac[34] == undefined) {
+      postac[34] = document.getElementById(nazwa_u_w).textContent;
+      postac[35] = document.getElementById(nazwa_uw).value;
+    }
+  }
+  for (var j = 1; j <= 9; j++) {
+    nazwa_u_a = u_a + j;
+    nazwa_ua = ua + j;
+    w_val2 = document.getElementById(nazwa_ua).value;
+    if (w_val2 != 0) {
+      postac[36] = document.getElementById(nazwa_u_a).textContent;
+      postac[37] = document.getElementById(nazwa_ua).value;
+    }
   }
 }
-*/

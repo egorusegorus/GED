@@ -26,9 +26,9 @@
           <th>Poziom</th>
         </tr>
         <tr>
-          <td><p>Alchemia i znajomość eliksirów</p></td>
+          <td><p id="u_w1">Alchemia i znajomość eliksirów</p></td>
           <td>
-            <select name="uw1" id="uw1">
+            <select name="uw1" id="uw1" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -36,9 +36,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Botanika</p></td>
+          <td><p id="u_w2">Botanika</p></td>
           <td>
-            <select name="uw2" id="uw2">
+            <select name="uw2" id="uw2" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -46,9 +46,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Historia Barsawii</p></td>
+          <td><p id="u_w3">Historia Barsawii</p></td>
           <td>
-            <select name="uw3" id="uw3">
+            <select name="uw3" id="uw3" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -56,9 +56,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Historia Pogromu</p></td>
+          <td><p id="u_w4">Historia Pogromu</p></td>
           <td>
-            <select name="uw4" id="uw4">
+            <select name="uw4" id="uw4" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -66,9 +66,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Historia Thery</p></td>
+          <td><p id="u_w5">Historia Thery</p></td>
           <td>
-            <select name="uw5" id="uw5">
+            <select name="uw5" id="uw5" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -76,9 +76,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Horrory</p></td>
+          <td><p id="u_w6">Horrory</p></td>
           <td>
-            <select name="uw6" id="uw6">
+            <select name="uw6" id="uw6" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -86,9 +86,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Legendy i bohaterowie</p></td>
+          <td><p id="u_w7">Legendy i bohaterowie</p></td>
           <td>
-            <select name="uw7" id="uw7">
+            <select name="uw7" id="uw7" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -96,9 +96,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Organizacja wojska krasnoludzkiego</p></td>
+          <td><p id="u_w8">Organizacja wojska krasnoludzkiego</p></td>
           <td>
-            <select name="uw8" id="uw8">
+            <select name="uw8" id="uw8" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -106,9 +106,9 @@
           </td>
         </tr>
         <tr>
-          <td><p>Piekarstwo</p></td>
+          <td><p id="u_w9">Piekarstwo</p></td>
           <td>
-            <select name="uw9" id="uw9">
+            <select name="uw9" id="uw9" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -116,9 +116,13 @@
           </td>
         </tr>
         <tr>
-          <td><p>Polityka therańska</p></td>
+          <td><p id="u_w10">Polityka therańska</p></td>
           <td>
-            <select name="uw10" id="uw10">
+            <select
+              name="uw10"
+              id="uw10"
+              onchange="oblicz_punkty_umiejetnosci()"
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -126,9 +130,13 @@
           </td>
         </tr>
         <tr>
-          <td><p>Tańce dworskie</p></td>
+          <td><p id="u_w11">Tańce dworskie</p></td>
           <td>
-            <select name="uw11" id="uw11">
+            <select
+              name="uw11"
+              id="uw11"
+              onchange="oblicz_punkty_umiejetnosci()"
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -136,9 +144,17 @@
           </td>
         </tr>
         <tr>
-          <td><p>Wiedza rasowa (specyficzne informacje o każdej z ras)</p></td>
           <td>
-            <select name="uw12" id="uw12">
+            <p id="u_w12">
+              Wiedza rasowa (specyficzne informacje o każdej z ras)
+            </p>
+          </td>
+          <td>
+            <select
+              name="uw12"
+              id="uw12"
+              onchange="oblicz_punkty_umiejetnosci()"
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -146,9 +162,13 @@
           </td>
         </tr>
         <tr>
-          <td><p>Znajomość dzikich zwierząt</p></td>
+          <td><p id="u_w13">Znajomość dzikich zwierząt</p></td>
           <td>
-            <select name="uw13" id="uw13">
+            <select
+              name="uw13"
+              id="uw13"
+              onchange="oblicz_punkty_umiejetnosci()"
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -156,9 +176,13 @@
           </td>
         </tr>
         <tr>
-          <td><p>Znajomość istot żywych</p></td>
+          <td><p id="u_w14">Znajomość istot żywych</p></td>
           <td>
-            <select name="uw14" id="uw14">
+            <select
+              name="uw14"
+              id="uw14"
+              onchange="oblicz_punkty_umiejetnosci()"
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -166,9 +190,13 @@
           </td>
         </tr>
         <tr>
-          <td><p>Znajomość starożytnych broni</p></td>
+          <td><p id="u_w15">Znajomość starożytnych broni</p></td>
           <td>
-            <select name="uw15" id="uw15">
+            <select
+              name="uw15"
+              id="uw15"
+              onchange="oblicz_punkty_umiejetnosci()"
+            >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -185,9 +213,9 @@
           <th>Poziom</th>
         </tr>
         <tr>
-          <td><p>Aktorstwo</p></td>
+          <td><p id="u_a1">Aktorstwo</p></td>
           <td>
-            <select name="ua1" id="ua1">
+            <select name="ua1" id="ua1" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
@@ -195,39 +223,41 @@
         </tr>
         <tr>
           <td>
-            <p>Haftowanie, wyszywanie (umiejętność praktykowana przez magów)</p>
+            <p id="u_a2">
+              Haftowanie, wyszywanie (umiejętność praktykowana przez magów)
+            </p>
           </td>
 
           <td>
-            <select name="ua2" id="ua2">
+            <select name="ua2" id="ua2" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><p>Malarstwo (obrazy na ciele, na płótnie)</p></td>
+          <td><p id="u_a3">Malarstwo (obrazy na ciele, na płótnie)</p></td>
           <td>
-            <select name="ua3" id="ua3">
+            <select name="ua3" id="ua3" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><p>Poezja</p></td>
+          <td><p id="u_a4">Poezja</p></td>
           <td>
-            <select name="ua4" id="ua4">
+            <select name="ua4" id="ua4" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><p>Rycie runów (na broni, na zbrojach itp.)</p></td>
+          <td><p id="u_a5">Rycie runów (na broni, na zbrojach itp.)</p></td>
 
           <td>
-            <select name="ua5" id="ua5">
+            <select name="ua5" id="ua5" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
@@ -235,41 +265,43 @@
         </tr>
         <tr>
           <td>
-            <p>
+            <p id="u_a6">
               Rycie wzorów i płaskorzeźb (w kamieniu, krysztale, drewnie,
               metalu)
             </p>
           </td>
           <td>
-            <select name="ua6" id="ua6">
+            <select name="ua6" id="ua6" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><p>Rzeźbiarstwo (w kamieniu, w krysztale, w drewnie)</p></td>
+          <td>
+            <p id="u_a7">Rzeźbiarstwo (w kamieniu, w krysztale, w drewnie)</p>
+          </td>
 
           <td>
-            <select name="ua7" id="ua7">
+            <select name="ua7" id="ua7" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><p>Umiejętności rzemieślnicze</p></td>
+          <td><p id="u_a8">Umiejętności rzemieślnicze</p></td>
           <td>
-            <select name="ua8" id="ua8">
+            <select name="ua8" id="ua8" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><p>Występy na żywo (muzykowanie, śpiew, taniec)</p></td>
+          <td><p id="u_a9">Występy na żywo (muzykowanie, śpiew, taniec)</p></td>
           <td>
-            <select name="ua9" id="ua9">
+            <select name="ua9" id="ua9" onchange="oblicz_punkty_umiejetnosci()">
               <option value="0">0</option>
               <option value="1">1</option>
             </select>
@@ -296,6 +328,13 @@
           </p>
         </tr>
       </table>
+      <button
+        id="umiejetnosci_Gotowe"
+        onclick="dalej_Umiejetnosci_gotowe()"
+        style="display: none"
+      >
+        Dalej
+      </button>
     </div>
   </body>
 </html>
