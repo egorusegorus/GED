@@ -2846,9 +2846,55 @@ function dalej_Umiejetnosci_gotowe() {
 }
 
 function laduj_liste_Czarow() {
-  document.getElementById("main").innerHTML = "";
+  var nazwa_Pliku_czarow;
+  if (postac[2] == "Czarodziej") {
+    nazwa_Pliku_czarow = "czary_czarodziej.html";
+  } else if (postac[2] == "Iluzjonista") {
+    nazwa_Pliku_czarow = "czary_iluzjonista.html";
+  } else if (postac[2] == "Ksenomanta") {
+    nazwa_Pliku_czarow = "czary_ksenomanty.html";
+  } else if (postac[2] == "Mistrz Żywiołów") {
+    nazwa_Pliku_czarow = "czary_mistrza_zywiolow.html";
+  }
+
+  document.getElementById("main").innerHTML =
+    "<b>Masz do wybrania: <lable id='ilosc_czarow' ></label> czarów</b>";
+  document.getElementById("ilosc_czarow").innerHTML =
+    postac[13] + "<b> czarów</b><br/>";
+  document.getElementById("main").innerHTML += "<b>Oto ich lista:</b><br/> ";
+  document.getElementById("main").innerHTML += "<br/>";
+  fetch(nazwa_Pliku_czarow)
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+      const tekstZPliku = htmlDocument.getElementById("lista_czarow").innerHTML;
+
+      document.getElementById("main").innerHTML += tekstZPliku;
+    });
   document.getElementById("Aside1").innerHTML = "";
   document.getElementById("Aside2").innerHTML = "";
+}
+function laduj_Opis_czaru() {
+  var nazwa_Pliku_czarow;
+  if (postac[2] == "Czarodziej") {
+    nazwa_Pliku_czarow = "czary_czarodziej.html";
+  } else if (postac[2] == "Iluzjonista") {
+    nazwa_Pliku_czarow = "czary_iluzjonista.html";
+  } else if (postac[2] == "Ksenomanta") {
+    nazwa_Pliku_czarow = "czary_ksenomanty.html";
+  } else if (postac[2] == "Mistrz Żywiołów") {
+    nazwa_Pliku_czarow = "czary_mistrza_zywiolow.html";
+  }
+  fetch(nazwa_Pliku_czarow)
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+      const tekstZPliku = htmlDocument.getElementById("lista_czarow").innerHTML;
+
+      document.getElementById("Aside1").innerHTML = tekstZPliku;
+    });
 }
 function laduj_Sklep() {}
 
