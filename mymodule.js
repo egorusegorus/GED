@@ -2008,7 +2008,7 @@ function ktory_Select_zostal_klikniety() {
     select.addEventListener("change", (event) => {
       const selectedValue = event.target.value;
       const selectedId = event.target.id;
-      console.log("Selected ID: ", selectedId); // add this line to check if the function is being called
+
       laduj_Opis_talentu_Do_Aside2(selectedId); // call the function with the selected ID
     });
   });
@@ -2841,7 +2841,7 @@ function dalej_Umiejetnosci_gotowe() {
   ) {
     laduj_liste_Czarow();
   } else {
-    laduj_Sklep();
+    dalej_Do_sklepu();
   }
 }
 
@@ -2858,7 +2858,7 @@ function laduj_liste_Czarow() {
   }
 
   document.getElementById("main").innerHTML =
-    "<b>Masz do wybrania: <lable id='ilosc_czarow' ></label> czarów</b>";
+    "<b>Masz do wybrania: <lable id='ilosc_czarow' ></label> czarów</b><br/>";
   document.getElementById("ilosc_czarow").innerHTML =
     postac[13] + "<b> czarów</b><br/>";
   document.getElementById("main").innerHTML += "<b>Oto ich lista:</b><br/> ";
@@ -2874,29 +2874,147 @@ function laduj_liste_Czarow() {
     });
   document.getElementById("Aside1").innerHTML = "";
   document.getElementById("Aside2").innerHTML = "";
+  document.getElementById("Aside2").innerHTML =
+    "<button id='dalej_Do_sklepu' onclick='dalej_Do_sklepu()' style='display:none;'>Dalej</button>";
 }
-function laduj_Opis_czaru() {
-  var nazwa_Pliku_czarow;
-  if (postac[2] == "Czarodziej") {
-    nazwa_Pliku_czarow = "czary_czarodziej.html";
-  } else if (postac[2] == "Iluzjonista") {
-    nazwa_Pliku_czarow = "czary_iluzjonista.html";
-  } else if (postac[2] == "Ksenomanta") {
-    nazwa_Pliku_czarow = "czary_ksenomanty.html";
-  } else if (postac[2] == "Mistrz Żywiołów") {
-    nazwa_Pliku_czarow = "czary_mistrza_zywiolow.html";
-  }
-  fetch(nazwa_Pliku_czarow)
-    .then((response) => response.text())
-    .then((data) => {
-      const parser = new DOMParser();
-      const htmlDocument = parser.parseFromString(data, "text/html");
-      const tekstZPliku = htmlDocument.getElementById("lista_czarow").innerHTML;
 
-      document.getElementById("Aside1").innerHTML = tekstZPliku;
+function laduj_Opis_czaru() {
+  var nazwa_Checkboxa;
+  var c;
+  const checkboxes = document.querySelectorAll("input[type='checkbox']");
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", (event) => {
+      const selectedId = event.target.id;
+
+      nazwa_Checkboxa = selectedId;
+
+      if (postac[2] == "Czarodziej") {
+        if (nazwa_Checkboxa == "czar1") {
+          c = "c1";
+        } else if (nazwa_Checkboxa == "czar2") {
+          c = "c2";
+        } else if (nazwa_Checkboxa == "czar3") {
+          c = "c3";
+        } else if (nazwa_Checkboxa == "czar4") {
+          c = "c4";
+        } else if (nazwa_Checkboxa == "czar5") {
+          c = "c5";
+        } else if (nazwa_Checkboxa == "czar6") {
+          c = "c6";
+        } else if (nazwa_Checkboxa == "czar7") {
+          c = "c7";
+        } else if (nazwa_Checkboxa == "czar8") {
+          c = "c8";
+        } else if (nazwa_Checkboxa == "czar9") {
+          c = "c9";
+        }
+      } else if (postac[2] == "Iluzjonista") {
+        if (nazwa_Checkboxa == "czar1") {
+          c = "c1";
+        } else if (nazwa_Checkboxa == "czar2") {
+          c = "c2";
+        } else if (nazwa_Checkboxa == "czar3") {
+          c = "c3";
+        } else if (nazwa_Checkboxa == "czar4") {
+          c = "c4";
+        } else if (nazwa_Checkboxa == "czar5") {
+          c = "c5";
+        } else if (nazwa_Checkboxa == "czar6") {
+          c = "c6";
+        } else if (nazwa_Checkboxa == "czar7") {
+          c = "c7";
+        } else if (nazwa_Checkboxa == "czar8") {
+          c = "c8";
+        }
+      } else if (postac[2] == "Ksenomanta") {
+        if (nazwa_Checkboxa == "czar1") {
+          c = "c1";
+        } else if (nazwa_Checkboxa == "czar2") {
+          c = "c2";
+        } else if (nazwa_Checkboxa == "czar3") {
+          c = "c3";
+        } else if (nazwa_Checkboxa == "czar4") {
+          c = "c4";
+        } else if (nazwa_Checkboxa == "czar5") {
+          c = "c5";
+        } else if (nazwa_Checkboxa == "czar6") {
+          c = "c6";
+        } else if (nazwa_Checkboxa == "czar7") {
+          c = "c7";
+        } else if (nazwa_Checkboxa == "czar8") {
+          c = "c8";
+        } else if (nazwa_Checkboxa == "czar9") {
+          c = "c9";
+        } else if (nazwa_Checkboxa == "czar10") {
+          c = "c10";
+        }
+      } else if (postac[2] == "Mistrz Żywiołów") {
+        if (nazwa_Checkboxa == "czar1") {
+          c = "c1";
+        } else if (nazwa_Checkboxa == "czar2") {
+          c = "c2";
+        } else if (nazwa_Checkboxa == "czar3") {
+          c = "c3";
+        } else if (nazwa_Checkboxa == "czar4") {
+          c = "c4";
+        } else if (nazwa_Checkboxa == "czar5") {
+          c = "c5";
+        } else if (nazwa_Checkboxa == "czar6") {
+          c = "c6";
+        } else if (nazwa_Checkboxa == "czar7") {
+          c = "c7";
+        } else if (nazwa_Checkboxa == "czar8") {
+          c = "c8";
+        } else if (nazwa_Checkboxa == "czar9") {
+          c = "c9";
+        }
+      }
+
+      var nazwa_Pliku_czarow;
+      if (postac[2] == "Czarodziej") {
+        nazwa_Pliku_czarow = "czary_czarodziej.html";
+      } else if (postac[2] == "Iluzjonista") {
+        nazwa_Pliku_czarow = "czary_iluzjonista.html";
+      } else if (postac[2] == "Ksenomanta") {
+        nazwa_Pliku_czarow = "czary_ksenomanty.html";
+      } else if (postac[2] == "Mistrz Żywiołów") {
+        nazwa_Pliku_czarow = "czary_mistrza_zywiolow.html";
+      }
+      var dane;
+      fetch(nazwa_Pliku_czarow)
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const htmlDocument = parser.parseFromString(data, "text/html");
+          const tekstZPliku = htmlDocument.getElementById(c).innerHTML;
+
+          dane = tekstZPliku;
+          document.getElementById("Aside1").innerHTML = dane;
+        });
     });
+  });
+  oblicz_Liczbe_czarow();
 }
-function laduj_Sklep() {}
+function oblicz_Liczbe_czarow() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let checkedCount = 0;
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      checkedCount++;
+    }
+  });
+  document.getElementById("ilosc_czarow").innerHTML = parseInt(
+    postac[13] - checkedCount
+  );
+  if (checkedCount == postac[13]) {
+    document.getElementById("dalej_Do_sklepu").style.display = "block";
+  } else {
+    document.getElementById("dalej_Do_sklepu").style.display = "none";
+  }
+}
+function dalej_Do_sklepu() {
+  // tutaj zapis wybranych czarow i ich atrybutow do tablicy ( nowa tablica)
+}
 
 function zapis_Umiejetnosci_do_Tablicy() {
   const u_a = "u_a";
