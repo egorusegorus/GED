@@ -1,3 +1,20 @@
+var spell1 = ["", "", "", "", "", "", ""];
+//0- nazwa czaru
+//1- liczba watkow
+//2- trudnosc utkania
+//3- zasieg czaru
+//4- czas dzialania czaru
+//5- efekt czaru
+//6- trudnosc rzucenia
+var spell2 = [];
+var spell3 = [];
+var spell4 = [];
+var spell5 = [];
+var spell6 = [];
+var spell7 = [];
+var spell8 = [];
+var spell9 = [];
+var spell10 = [];
 var t1 = [];
 //0- nazwa talentu
 //1- stopien cechy
@@ -58,7 +75,7 @@ function showDescription() {
   for (var i = 0; i < radios.length; i++) {
     if (radios[i].checked) {
       value = radios[i].value;
-      console.log("Selected value: " + value);
+
       talent = value + "_talent";
 
       fetch("dyscypliny.html")
@@ -67,7 +84,6 @@ function showDescription() {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById(value).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside1").innerHTML = tekstZPliku;
         });
@@ -77,7 +93,6 @@ function showDescription() {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById(talent).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -803,7 +818,6 @@ function laduj_Opis_cechy_do_Aside1() {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById(text_nazwa).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside1").innerHTML = tekstZPliku;
         });
@@ -2032,7 +2046,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("czyt-pis").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2044,7 +2057,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("czyt-pis-znak-mag").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2055,7 +2067,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("matryca").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2066,7 +2077,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("matryca").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2078,7 +2088,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2090,7 +2099,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rzucanie-czarow").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2102,7 +2110,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("tkanie-watkow").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2116,7 +2123,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2127,7 +2133,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("manewr").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2139,7 +2144,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("prowokacja").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2151,7 +2155,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2162,7 +2165,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2175,7 +2177,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const tekstZPliku = htmlDocument.getElementById(
             "zachowanie-równowagi"
           ).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2189,7 +2190,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2201,7 +2201,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2212,7 +2211,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("szarża").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2225,7 +2223,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const tekstZPliku = htmlDocument.getElementById(
             "więź-ze-zwierzęciem"
           ).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2237,7 +2234,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("woltyżerka").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2251,7 +2247,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2263,7 +2258,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("ognista-krew").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2275,7 +2269,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("okrzyk-bojowy").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2287,7 +2280,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2298,7 +2290,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2311,7 +2302,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const tekstZPliku = htmlDocument.getElementById(
             "Żeglarstwo-powietrzne"
           ).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2325,7 +2315,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2337,7 +2326,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("naśladowanie-głosu").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2349,7 +2337,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("pierwsze-wrażenie").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2361,7 +2348,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("pieśń-uczuć").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2373,7 +2359,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("przebranie").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2385,7 +2370,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2398,7 +2382,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("pazury").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2410,7 +2393,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2422,7 +2404,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("tropienie").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2434,7 +2415,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("walka-wręcz").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2447,7 +2427,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const tekstZPliku = htmlDocument.getElementById(
             "więź-ze-zwierzęciem"
           ).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2460,7 +2439,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const tekstZPliku = htmlDocument.getElementById(
             "zapanowanie-nad-zwierzęciem"
           ).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2474,7 +2452,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("akrobatyczny-atak").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2486,7 +2463,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2498,7 +2474,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("drewniana-skóra").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2510,7 +2485,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("powietrzny taniec").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2522,7 +2496,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2534,7 +2507,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("walka-wręcz").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2548,7 +2520,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-strzelecka").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2560,7 +2531,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("celny-strzał").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2572,7 +2542,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("mistyczny-znak").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2584,7 +2553,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2596,7 +2564,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("strzała-kierunku").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2607,7 +2574,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2621,7 +2587,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2633,7 +2598,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("historia-broni").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2645,7 +2609,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("przekucie-ostrza").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2657,7 +2620,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2669,7 +2631,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("umysł-ze-stali").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2680,7 +2641,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const parser = new DOMParser();
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku = htmlDocument.getElementById("unik").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2694,7 +2654,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("atak-z-zaskoczenia").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2706,7 +2665,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("broń-biała").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2719,7 +2677,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const tekstZPliku = htmlDocument.getElementById(
             "kradzież-kieszonkowa"
           ).innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2731,7 +2688,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("magiczny-wytrych").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2743,7 +2699,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("rytual-karmiczny").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2755,7 +2710,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("skradanie-się").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -2767,7 +2721,6 @@ function laduj_Opis_talentu_Do_Aside2(id_select) {
           const htmlDocument = parser.parseFromString(data, "text/html");
           const tekstZPliku =
             htmlDocument.getElementById("wspinaczka").innerHTML;
-          console.log("Description text: " + tekstZPliku);
 
           document.getElementById("Aside2").innerHTML = tekstZPliku;
         });
@@ -3012,8 +2965,317 @@ function oblicz_Liczbe_czarow() {
     document.getElementById("dalej_Do_sklepu").style.display = "none";
   }
 }
+
+function zapis_Czarow_do_tablicy() {
+  if (postac[2] == "Czarodziej") {
+    var checkboxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+    var ids = [];
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      var id = checkboxes[i].id;
+      if (id === "czar1") {
+        spell1[0] = "Badanie aury";
+        spell1[1] = "1";
+        spell1[2] = "6/14";
+        spell1[3] = " 25 metrów";
+        spell1[4] = " 5 + poziom minut";
+        spell1[5] = "moc woli +5";
+        spell1[6] = "obrona magiczna ofiary";
+      } else if (id === "czar2") {
+        spell2[0] = "Chodzenie po ścianach";
+        spell2[1] = "1";
+        spell2[2] = "6/14";
+        spell2[3] = " dotyk";
+        spell2[4] = " 10 + poziom rund";
+        spell2[5] = " moc woli +5";
+        spell2[6] = "obrona magiczna ofiary";
+      } else if (id === "czar3") {
+        spell3[0] = "Miażdżąca wola";
+        spell3[1] = "1";
+        spell3[2] = "6/16";
+        spell3[3] = "120 m";
+        spell3[4] = "1 runda";
+        spell3[5] = "moc woli +5";
+        spell3[6] = "obrona magiczna ofiary";
+      } else if (id === "czar4") {
+        spell4[0] = "Ognisty atak";
+        spell4[1] = "1";
+        spell4[2] = "7/15";
+        spell4[3] = "25m";
+        spell4[4] = "1 runda";
+        spell4[5] = "moc woli +4";
+        spell4[6] = "obrona magiczna ofiary";
+      } else if (id === "czar5") {
+        spell5[0] = "Rozniecenie ognia";
+        spell5[1] = "brak";
+        spell5[2] = "-/11";
+        spell5[3] = "5 m";
+        spell5[4] = "1 runda";
+        spell5[5] = "rozpalenie łatwo palnych przedmiotów ";
+        spell5[6] = "obrona magiczna ofiary";
+      } else if (id === "czar6") {
+        spell6[0] = "Rozproszenie magii";
+        spell6[1] = "1";
+        spell6[2] = "6/13";
+        spell6[3] = "60 m";
+        spell6[4] = "1 runda";
+        spell6[5] = "moc woli";
+        spell6[6] = "2";
+      } else if (id === "czar7") {
+        spell7[0] = "Umysłowy sztylet";
+        spell7[1] = "brak";
+        spell7[2] = "-/7";
+        spell7[3] = "40 m";
+        spell7[4] = "1 runda";
+        spell7[5] = "moc woli +2";
+        spell7[6] = " obrona magiczna ofiary";
+      } else if (id === "czar8") {
+        spell8[0] = "Zmysł astralny";
+        spell8[1] = "2";
+        spell8[2] = "5/15";
+        spell8[3] = "60 m";
+        spell8[4] = " 10 + poziom minut";
+        spell8[5] = "moc woli + 3";
+        spell8[6] = "6 (patrz opis)";
+      } else if (id === "czar9") {
+        spell9[0] = "Żelazna dłoń";
+        spell9[1] = "1";
+        spell9[2] = "5/13";
+        spell9[3] = "dotyk";
+        spell9[4] = "10 + poziom rund";
+        spell9[5] = " zwiększenie o +3 stopnie obrażeń zadawanych bronią białą";
+        spell9[6] = "obrona magiczna ofiary ";
+      }
+    }
+  } else if (postac[2] == "Iluzjonista") {
+    var checkboxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+    var ids = [];
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      var id = checkboxes[i].id;
+      if (id === "czar1") {
+        spell1[0] = "";
+        spell1[1] = "";
+        spell1[2] = "";
+        spell1[3] = "";
+        spell1[4] = "";
+        spell1[5] = "";
+        spell1[6] = "";
+      } else if (id === "czar2") {
+        spell2[0] = "";
+        spell2[1] = "";
+        spell2[2] = "";
+        spell2[3] = "";
+        spell2[4] = "";
+        spell2[5] = "";
+        spell2[6] = "";
+      } else if (id === "czar3") {
+        spell3[0] = "";
+        spell3[1] = "";
+        spell3[2] = "";
+        spell3[3] = "";
+        spell3[4] = "";
+        spell3[5] = "";
+        spell3[6] = "";
+      } else if (id === "czar4") {
+        spell4[0] = "";
+        spell4[1] = "";
+        spell4[2] = "";
+        spell4[3] = "";
+        spell4[4] = "";
+        spell4[5] = "";
+        spell4[6] = "";
+      } else if (id === "czar5") {
+        spell5[0] = "";
+        spell5[1] = "";
+        spell5[2] = "";
+        spell5[3] = "";
+        spell5[4] = "";
+        spell5[5] = "";
+        spell5[6] = "";
+      } else if (id === "czar6") {
+        spell6[0] = "";
+        spell6[1] = "";
+        spell6[2] = "";
+        spell6[3] = "";
+        spell6[4] = "";
+        spell6[5] = "";
+        spell6[6] = "";
+      } else if (id === "czar7") {
+        spell7[0] = "";
+        spell7[1] = "";
+        spell7[2] = "";
+        spell7[3] = "";
+        spell7[4] = "";
+        spell7[5] = "";
+        spell7[6] = "";
+      } else if (id === "czar8") {
+        spell8[0] = "";
+        spell8[1] = "";
+        spell8[2] = "";
+        spell8[3] = "";
+        spell8[4] = "";
+        spell8[5] = "";
+        spell8[6] = "";
+      }
+    }
+  } else if (postac[2] == "Ksenomanta") {
+    var checkboxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+    var ids = [];
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      var id = checkboxes[i].id;
+      if (id === "czar1") {
+        spell1[0] = "";
+        spell1[1] = "";
+        spell1[2] = "";
+        spell1[3] = "";
+        spell1[4] = "";
+        spell1[5] = "";
+        spell1[6] = "";
+      } else if (id === "czar2") {
+        spell2[0] = "";
+        spell2[1] = "";
+        spell2[2] = "";
+        spell2[3] = "";
+        spell2[4] = "";
+        spell2[5] = "";
+        spell2[6] = "";
+      } else if (id === "czar3") {
+        spell3[0] = "";
+        spell3[1] = "";
+        spell3[2] = "";
+        spell3[3] = "";
+        spell3[4] = "";
+        spell3[5] = "";
+        spell3[6] = "";
+      } else if (id === "czar4") {
+        spell4[0] = "";
+        spell4[1] = "";
+        spell4[2] = "";
+        spell4[3] = "";
+        spell4[4] = "";
+        spell4[5] = "";
+        spell4[6] = "";
+      } else if (id === "czar5") {
+        spell5[0] = "";
+        spell5[1] = "";
+        spell5[2] = "";
+        spell5[3] = "";
+        spell5[4] = "";
+        spell5[5] = "";
+        spell5[6] = "";
+      } else if (id === "czar6") {
+        spell6[0] = "";
+        spell6[1] = "";
+        spell6[2] = "";
+        spell6[3] = "";
+        spell6[4] = "";
+        spell6[5] = "";
+        spell6[6] = "";
+      } else if (id === "czar7") {
+        spell7[0] = "";
+        spell7[1] = "";
+        spell7[2] = "";
+        spell7[3] = "";
+        spell7[4] = "";
+        spell7[5] = "";
+        spell7[6] = "";
+      } else if (id === "czar8") {
+        spell8[0] = "";
+        spell8[1] = "";
+        spell8[2] = "";
+        spell8[3] = "";
+        spell8[4] = "";
+        spell8[5] = "";
+        spell8[6] = "";
+      }
+    }
+  } else if (postac[2] == "Mistrz Żywiołów") {
+    var checkboxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+    var ids = [];
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      var id = checkboxes[i].id;
+      if (id === "czar1") {
+        spell1[0] = "";
+        spell1[1] = "";
+        spell1[2] = "";
+        spell1[3] = "";
+        spell1[4] = "";
+        spell1[5] = "";
+        spell1[6] = "";
+      } else if (id === "czar2") {
+        spell2[0] = "";
+        spell2[1] = "";
+        spell2[2] = "";
+        spell2[3] = "";
+        spell2[4] = "";
+        spell2[5] = "";
+        spell2[6] = "";
+      } else if (id === "czar3") {
+        spell3[0] = "";
+        spell3[1] = "";
+        spell3[2] = "";
+        spell3[3] = "";
+        spell3[4] = "";
+        spell3[5] = "";
+        spell3[6] = "";
+      } else if (id === "czar4") {
+        spell4[0] = "";
+        spell4[1] = "";
+        spell4[2] = "";
+        spell4[3] = "";
+        spell4[4] = "";
+        spell4[5] = "";
+        spell4[6] = "";
+      } else if (id === "czar5") {
+        spell5[0] = "";
+        spell5[1] = "";
+        spell5[2] = "";
+        spell5[3] = "";
+        spell5[4] = "";
+        spell5[5] = "";
+        spell5[6] = "";
+      } else if (id === "czar6") {
+        spell6[0] = "";
+        spell6[1] = "";
+        spell6[2] = "";
+        spell6[3] = "";
+        spell6[4] = "";
+        spell6[5] = "";
+        spell6[6] = "";
+      } else if (id === "czar7") {
+        spell7[0] = "";
+        spell7[1] = "";
+        spell7[2] = "";
+        spell7[3] = "";
+        spell7[4] = "";
+        spell7[5] = "";
+        spell7[6] = "";
+      } else if (id === "czar8") {
+        spell8[0] = "";
+        spell8[1] = "";
+        spell8[2] = "";
+        spell8[3] = "";
+        spell8[4] = "";
+        spell8[5] = "";
+        spell8[6] = "";
+      }
+    }
+  }
+}
+
 function dalej_Do_sklepu() {
-  // tutaj zapis wybranych czarow i ich atrybutow do tablicy ( nowa tablica)
+  zapis_Czarow_do_tablicy();
 }
 
 function zapis_Umiejetnosci_do_Tablicy() {
