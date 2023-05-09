@@ -3058,69 +3058,70 @@ function zapis_Czarow_do_tablicy() {
     for (var i = 0; i < checkboxes.length; i++) {
       var id = checkboxes[i].id;
       if (id === "czar1") {
-        spell1[0] = "";
-        spell1[1] = "";
-        spell1[2] = "";
-        spell1[3] = "";
-        spell1[4] = "";
-        spell1[5] = "";
-        spell1[6] = "";
+        spell1[0] = "Dobra mina";
+        spell1[1] = "2";
+        spell1[2] = "5/14";
+        spell1[3] = "dotyk";
+        spell1[4] = "8 + poziom minut ";
+        spell1[5] = "+5 stopni do Charyzmy ";
+        spell1[6] = "obrona ma- giczna ofiary";
       } else if (id === "czar2") {
-        spell2[0] = "";
-        spell2[1] = "";
-        spell2[2] = "";
-        spell2[3] = "";
-        spell2[4] = "";
-        spell2[5] = "";
-        spell2[6] = "";
+        spell2[0] = "Kontrola nad liną";
+        spell2[1] = "brak";
+        spell2[2] = "-/7";
+        spell2[3] = "25 metrów";
+        spell2[4] = " 3 + poziom minut";
+        spell2[5] = "moc woli +4";
+        spell2[6] = "obrona magiczna ofiary (patrz opis)";
       } else if (id === "czar3") {
-        spell3[0] = "";
-        spell3[1] = "";
-        spell3[2] = "";
-        spell3[3] = "";
-        spell3[4] = "";
-        spell3[5] = "";
-        spell3[6] = "";
+        spell3[0] = "Lustrzane odbicie";
+        spell3[1] = "1";
+        spell3[2] = "7/15";
+        spell3[3] = "dotyk";
+        spell3[4] = "7 + poziom minut ";
+        spell3[5] = "stworzenie podobizny w odległości 3 metrów";
+        spell3[6] = " obrona magiczna ofiary";
       } else if (id === "czar4") {
-        spell4[0] = "";
-        spell4[1] = "";
-        spell4[2] = "";
-        spell4[3] = "";
-        spell4[4] = "";
-        spell4[5] = "";
-        spell4[6] = "";
+        spell4[0] = "Przemiana metalu";
+        spell4[1] = "1";
+        spell4[2] = "7/14";
+        spell4[3] = "dotyk";
+        spell4[4] = "wynik testu mocy woli + 7 minut ";
+        spell4[5] = "zmiana wyglądu metalu";
+        spell4[6] = "obrona magiczna ofiary ";
       } else if (id === "czar5") {
-        spell5[0] = "";
-        spell5[1] = "";
-        spell5[2] = "";
-        spell5[3] = "";
-        spell5[4] = "";
-        spell5[5] = "";
-        spell5[6] = "";
+        spell5[0] = "Sakiewka biedaka";
+        spell5[1] = "brak";
+        spell5[2] = "-/7";
+        spell5[3] = " dotyk";
+        spell5[4] = "1 + poziom minut";
+        spell5[5] = "moc woli +4 ";
+        spell5[6] = "obrona magiczna ofiary ";
       } else if (id === "czar6") {
-        spell6[0] = "";
-        spell6[1] = "";
-        spell6[2] = "";
-        spell6[3] = "";
-        spell6[4] = "";
-        spell6[5] = "";
-        spell6[6] = "";
+        spell6[0] = "Światło";
+        spell6[1] = "1";
+        spell6[2] = "6/14";
+        spell6[3] = "10 metrów";
+        spell6[4] = "wynik testu mocy woli + 5 minut";
+        spell6[5] = "powołanie do istnienia światła ";
+        spell6[6] = "2 (patrz opis)";
       } else if (id === "czar7") {
-        spell7[0] = "";
-        spell7[1] = "";
-        spell7[2] = "";
-        spell7[3] = "";
-        spell7[4] = "";
-        spell7[5] = "";
-        spell7[6] = "";
+        spell7[0] = "Tajemnicze głosy";
+        spell7[1] = "brak";
+        spell7[2] = "-/7";
+        spell7[3] = "40 metrów ";
+        spell7[4] = "15 + poziom rund";
+        spell7[5] =
+          " Stworzenie tylu iluzyjnych głosów, ile wynosi poziom rzucania czarów Iluzjonisty ";
+        spell7[6] = " obrona magiczna ofiary";
       } else if (id === "czar8") {
-        spell8[0] = "";
-        spell8[1] = "";
-        spell8[2] = "";
-        spell8[3] = "";
-        spell8[4] = "";
-        spell8[5] = "";
-        spell8[6] = "";
+        spell8[0] = "Uspokajający dotyk";
+        spell8[1] = "brak";
+        spell8[2] = "-/7 ";
+        spell8[3] = "dotyk";
+        spell8[4] = "12 + poziom rund";
+        spell8[5] = "+3 stopnie przy obronie przed strachem";
+        spell8[6] = "obrona magiczna ofiary ";
       }
     }
   } else if (postac[2] == "Ksenomanta") {
@@ -3132,69 +3133,85 @@ function zapis_Czarow_do_tablicy() {
     for (var i = 0; i < checkboxes.length; i++) {
       var id = checkboxes[i].id;
       if (id === "czar1") {
-        spell1[0] = "";
-        spell1[1] = "";
-        spell1[2] = "";
-        spell1[3] = "";
-        spell1[4] = "";
-        spell1[5] = "";
-        spell1[6] = "";
+        spell1[0] = "Doświadczenie śmierci";
+        spell1[1] = "1";
+        spell1[2] = "6/12";
+        spell1[3] = "20 m";
+        spell1[4] = "3 + poziom rund ";
+        spell1[5] = "moc woli +5";
+        spell1[6] = "obrona magiczna ofiary";
       } else if (id === "czar2") {
-        spell2[0] = "";
-        spell2[1] = "";
-        spell2[2] = "";
-        spell2[3] = "";
-        spell2[4] = "";
-        spell2[5] = "";
-        spell2[6] = "";
+        spell2[0] = "Gnicie";
+        spell2[1] = "brak";
+        spell2[2] = "-/9";
+        spell2[3] = "25 metrów";
+        spell2[4] = "1 runda";
+        spell2[5] = "pożywienie zaczyna gnić ";
+        spell2[6] = "2 (patrz opis)";
       } else if (id === "czar3") {
-        spell3[0] = "";
-        spell3[1] = "";
-        spell3[2] = "";
-        spell3[3] = "";
-        spell3[4] = "";
-        spell3[5] = "";
-        spell3[6] = "";
+        spell3[0] = "Krąg zimna";
+        spell3[1] = "2";
+        spell3[2] = "6/15";
+        spell3[3] = "dotyk ";
+        spell3[4] = "6 + poziom minut";
+        spell3[5] = "k6 obrażeń dla wszystkich w kręgu";
+        spell3[6] = "obrona magiczna ofiary";
       } else if (id === "czar4") {
-        spell4[0] = "";
-        spell4[1] = "";
-        spell4[2] = "";
-        spell4[3] = "";
-        spell4[4] = "";
-        spell4[5] = "";
-        spell4[6] = "";
+        spell4[0] = "Odstraszanie owadów";
+        spell4[1] = "1";
+        spell4[2] = "6/7";
+        spell4[3] = "dotyk ";
+        spell4[4] = " 3 + poziom minut";
+        spell4[5] = "moc woli +5";
+        spell4[6] = "2";
       } else if (id === "czar5") {
-        spell5[0] = "";
-        spell5[1] = "";
-        spell5[2] = "";
-        spell5[3] = "";
-        spell5[4] = "";
-        spell5[5] = "";
-        spell5[6] = "";
+        spell5[0] = "Pojedynek woli";
+        spell5[1] = " brak";
+        spell5[2] = " -/7 ";
+        spell5[3] = "10 metrów";
+        spell5[4] = "3 + poziom minut ";
+        spell5[5] = " moc woli +4 ";
+        spell5[6] = "obrona magiczna ofiary ";
       } else if (id === "czar6") {
-        spell6[0] = "";
-        spell6[1] = "";
-        spell6[2] = "";
-        spell6[3] = "";
-        spell6[4] = "";
-        spell6[5] = "";
-        spell6[6] = "";
+        spell6[0] = "Rozkazywanie zwierzętom nocy";
+        spell6[1] = "1";
+        spell6[2] = " 5/13";
+        spell6[3] = " 120 metrów";
+        spell6[4] = "3 + poziom minut";
+        spell6[5] = "moc woli +2";
+        spell6[6] = "obrona magiczna ofiar";
       } else if (id === "czar7") {
-        spell7[0] = "";
-        spell7[1] = "";
-        spell7[2] = "";
-        spell7[3] = "";
-        spell7[4] = "";
-        spell7[5] = "";
-        spell7[6] = "";
+        spell7[0] = "Sucho lub mokro";
+        spell7[1] = "1";
+        spell7[2] = "7/8";
+        spell7[3] = " 15 metrów";
+        spell7[4] = "1 runda";
+        spell7[5] = "moc woli +4 ";
+        spell7[6] = "obrona magiczna ofiary ";
       } else if (id === "czar8") {
-        spell8[0] = "";
-        spell8[1] = "";
-        spell8[2] = "";
-        spell8[3] = "";
-        spell8[4] = "";
-        spell8[5] = "";
-        spell8[6] = "";
+        spell8[0] = "Taniec kości";
+        spell8[1] = "1";
+        spell8[2] = "7/15 ";
+        spell8[3] = "25 metrów";
+        spell8[4] = "3 + poziom rund";
+        spell8[5] = "moc woli +4";
+        spell8[6] = " obrona magiczna ofiary ";
+      } else if (id === "czar9") {
+        spell9[0] = "Upiorny dotyk";
+        spell9[1] = "brak";
+        spell9[2] = " -/7";
+        spell9[3] = "dotyk";
+        spell9[4] = "1 runda";
+        spell9[5] = "moc woli +6";
+        spell9[6] = "  obrona magiczna ofiary";
+      } else if (id === "czar10") {
+        spell10[0] = "Wykrycie ożywieńców";
+        spell10[1] = "brak";
+        spell10[2] = "-/7";
+        spell10[3] = " 25 metrów";
+        spell10[4] = "3 + poziom minut";
+        spell10[5] = "moc woli +5";
+        spell10[6] = "obrona magiczna ofiary ";
       }
     }
   } else if (postac[2] == "Mistrz Żywiołów") {
@@ -3206,69 +3223,77 @@ function zapis_Czarow_do_tablicy() {
     for (var i = 0; i < checkboxes.length; i++) {
       var id = checkboxes[i].id;
       if (id === "czar1") {
-        spell1[0] = "";
-        spell1[1] = "";
-        spell1[2] = "";
-        spell1[3] = "";
-        spell1[4] = "";
-        spell1[5] = "";
-        spell1[6] = "";
+        spell1[0] = "Kryształowe pociski";
+        spell1[1] = "1";
+        spell1[2] = "5/12";
+        spell1[3] = "30 metrów";
+        spell1[4] = "1 runda";
+        spell1[5] = "moc woli +6";
+        spell1[6] = " obrona magiczna ofiary";
       } else if (id === "czar2") {
-        spell2[0] = "";
-        spell2[1] = "";
-        spell2[2] = "";
-        spell2[3] = "";
-        spell2[4] = "";
-        spell2[5] = "";
-        spell2[6] = "";
+        spell2[0] = "Maskowanie";
+        spell2[1] = "brak";
+        spell2[2] = "-/7";
+        spell2[3] = "dotyk";
+        spell2[4] = "5 + poziom minut";
+        spell2[5] = "moc woli +7";
+        spell2[6] = "obrona magiczna ofiary";
       } else if (id === "czar3") {
-        spell3[0] = "";
-        spell3[1] = "";
-        spell3[2] = "";
-        spell3[3] = "";
-        spell3[4] = "";
-        spell3[5] = "";
-        spell3[6] = "";
+        spell3[0] = "Mowa roślin";
+        spell3[1] = "brak";
+        spell3[2] = "-/7";
+        spell3[3] = "osobisty ";
+        spell3[4] = "10+ poziom minut";
+        spell3[5] = "rozmowa z duchami roślin ";
+        spell3[6] = " 2";
       } else if (id === "czar4") {
-        spell4[0] = "";
-        spell4[1] = "";
-        spell4[2] = "";
-        spell4[3] = "";
-        spell4[4] = "";
-        spell4[5] = "";
-        spell4[6] = "";
+        spell4[0] = "Oczyszczenie wody";
+        spell4[1] = "1";
+        spell4[2] = "5/13";
+        spell4[3] = "dotyk ";
+        spell4[4] = "1 runda ";
+        spell4[5] = "1/2 moc woli +4 litry";
+        spell4[6] = "2 lub więcej (patrz opis) ";
       } else if (id === "czar5") {
-        spell5[0] = "";
-        spell5[1] = "";
-        spell5[2] = "";
-        spell5[3] = "";
-        spell5[4] = "";
-        spell5[5] = "";
-        spell5[6] = "";
+        spell5[0] = "Odporność na ogień";
+        spell5[1] = "brak";
+        spell5[2] = "-/7";
+        spell5[3] = "dotyk";
+        spell5[4] = "6 + poziom minut ";
+        spell5[5] = "+3 do pancerza chroniącego przed ogniem";
+        spell5[6] = "obrona magiczna ofiary ";
       } else if (id === "czar6") {
-        spell6[0] = "";
-        spell6[1] = "";
-        spell6[2] = "";
-        spell6[3] = "";
-        spell6[4] = "";
-        spell6[5] = "";
-        spell6[6] = "";
+        spell6[0] = "Odporność na zimno";
+        spell6[1] = "brak";
+        spell6[2] = "-/7";
+        spell6[3] = "dotyk ";
+        spell6[4] = "6 + poziom minut";
+        spell6[5] = "+3 do pancerza chroniącego przed zimnem";
+        spell6[6] = "obrona magiczna ofiary";
       } else if (id === "czar7") {
-        spell7[0] = "";
-        spell7[1] = "";
-        spell7[2] = "";
-        spell7[3] = "";
-        spell7[4] = "";
-        spell7[5] = "";
-        spell7[6] = "";
+        spell7[0] = "Płomienne ostrze";
+        spell7[1] = "2";
+        spell7[2] = "5/14";
+        spell7[3] = "10 metrów";
+        spell7[4] = "10 + poziom rund";
+        spell7[5] = "+1k4 do zadawanych przez broń obrażeń ";
+        spell7[6] = " obrona magiczna broni ofiary";
       } else if (id === "czar8") {
-        spell8[0] = "";
-        spell8[1] = "";
-        spell8[2] = "";
-        spell8[3] = "";
-        spell8[4] = "";
-        spell8[5] = "";
-        spell8[6] = "";
+        spell8[0] = "Podgrzanie pożywienia";
+        spell8[1] = "1";
+        spell8[2] = "5/7 ";
+        spell8[3] = "dotyk";
+        spell8[4] = "10 + poziom minut ";
+        spell8[5] = "podgrzewa odżywcze pożywieni";
+        spell8[6] = " 2";
+      } else if (id === "czar9") {
+        spell9[0] = "Wspinaczka";
+        spell9[1] = "1";
+        spell9[2] = "6/14";
+        spell9[3] = "dotyk";
+        spell9[4] = "5 + poziom minut";
+        spell9[5] = "+3 do wspinania";
+        spell9[6] = "obrona magiczna broni ofiary";
       }
     }
   }
@@ -3276,6 +3301,9 @@ function zapis_Czarow_do_tablicy() {
 
 function dalej_Do_sklepu() {
   zapis_Czarow_do_tablicy();
+  document.getElementById("main").innerHTML = "";
+  document.getElementById("Aside1").innerHTML = "";
+  document.getElementById("Aside2").innerHTML = "";
 }
 
 function zapis_Umiejetnosci_do_Tablicy() {
