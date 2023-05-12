@@ -2784,6 +2784,41 @@ function oblicz_punkty_umiejetnosci() {
   }
 }
 
+function zapis_Umiejetnosci_do_Tablicy() {
+  const u_a = "u_a";
+  const u_w = "u_w";
+  const uw = "uw";
+  const ua = "ua";
+  var nazwa_u_a;
+  var nazwa_u_w;
+  var nazwa_uw;
+  var nazwa_ua;
+  var w_val;
+  var w_val2;
+
+  for (var i = 1; i <= 15; i++) {
+    nazwa_u_w = u_w + i;
+    nazwa_uw = uw + i;
+    w_val = document.getElementById(nazwa_uw).value;
+    if (w_val != 0 && postac[32] == undefined) {
+      postac[32] = document.getElementById(nazwa_u_w).textContent;
+      postac[33] = document.getElementById(nazwa_uw).value;
+    } else if (w_val != 0 && postac[34] == undefined) {
+      postac[34] = document.getElementById(nazwa_u_w).textContent;
+      postac[35] = document.getElementById(nazwa_uw).value;
+    }
+  }
+  for (var j = 1; j <= 9; j++) {
+    nazwa_u_a = u_a + j;
+    nazwa_ua = ua + j;
+    w_val2 = document.getElementById(nazwa_ua).value;
+    if (w_val2 != 0) {
+      postac[36] = document.getElementById(nazwa_u_a).textContent;
+      postac[37] = document.getElementById(nazwa_ua).value;
+    }
+  }
+}
+
 function dalej_Umiejetnosci_gotowe() {
   zapis_Umiejetnosci_do_Tablicy();
   if (
@@ -3299,44 +3334,62 @@ function zapis_Czarow_do_tablicy() {
   }
 }
 
-function dalej_Do_sklepu() {
-  zapis_Czarow_do_tablicy();
-  document.getElementById("main").innerHTML = "";
-  document.getElementById("Aside1").innerHTML = "";
-  document.getElementById("Aside2").innerHTML = "";
+function czy_SF_wystarczy() {
+  // Pobierz wartość minimalnej siły fizycznej postaci
+  var minimalnaSilaFizycznaPostaci = postac[4];
+
+  // Znajdź wszystkie wiersze z danymi broni
+  var wierszeBroni = document.querySelectorAll("table tr");
+
+  // Iteruj przez każdy wiersz, zaczynając od drugiego wiersza (pierwszy to nagłówki)
+  for (var i = 1; i < wierszeBroni.length; i++) {
+    var wiersz = wierszeBroni[i];
+
+    // Pobierz wartość minimalnej siły fizycznej broni w danym wierszu
+    var minimalnaSilaFizycznaBroni = parseInt(wiersz.cells[3].textContent);
+
+    // Pobierz wartość ceny broni w danym wierszu
+    var cenaBroni = parseInt(wiersz.cells[1].textContent);
+
+    // Jeśli minimalna siła fizyczna broni jest większa niż minimalna siła fizyczna postaci
+    // lub cena broni jest większa od 120
+    if (
+      minimalnaSilaFizycznaBroni > minimalnaSilaFizycznaPostaci ||
+      cenaBroni > 120
+    ) {
+      // Przekreśl tekst w komórce z nazwą broni
+      wiersz.cells[0].style.textDecoration = "line-through";
+
+      // Wyłącz checkbox i select w komórce z oceną broni
+      var checkbox = wiersz.cells[6].querySelector("input[type='checkbox']");
+      var select = wiersz.cells[6].querySelector("select");
+      checkbox.disabled = true;
+      select.disabled = true;
+    }
+  }
 }
 
-function zapis_Umiejetnosci_do_Tablicy() {
-  const u_a = "u_a";
-  const u_w = "u_w";
-  const uw = "uw";
-  const ua = "ua";
-  var nazwa_u_a;
-  var nazwa_u_w;
-  var nazwa_uw;
-  var nazwa_ua;
-  var w_val;
-  var w_val2;
+function bron_WW() {
+  var aside2Element = document.getElementById("Aside2");
+  aside2Element.remove();
 
-  for (var i = 1; i <= 15; i++) {
-    nazwa_u_w = u_w + i;
-    nazwa_uw = uw + i;
-    w_val = document.getElementById(nazwa_uw).value;
-    if (w_val != 0 && postac[32] == undefined) {
-      postac[32] = document.getElementById(nazwa_u_w).textContent;
-      postac[33] = document.getElementById(nazwa_uw).value;
-    } else if (w_val != 0 && postac[34] == undefined) {
-      postac[34] = document.getElementById(nazwa_u_w).textContent;
-      postac[35] = document.getElementById(nazwa_uw).value;
-    }
-  }
-  for (var j = 1; j <= 9; j++) {
-    nazwa_u_a = u_a + j;
-    nazwa_ua = ua + j;
-    w_val2 = document.getElementById(nazwa_ua).value;
-    if (w_val2 != 0) {
-      postac[36] = document.getElementById(nazwa_u_a).textContent;
-      postac[37] = document.getElementById(nazwa_ua).value;
-    }
-  }
+  fetch("bron_ww.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+
+      const bodyContent = htmlDocument.body.innerHTML;
+      document.getElementById("Aside1").innerHTML = bodyContent;
+
+      czy_SF_wystarczy();
+    });
+}
+
+function dalej_Do_sklepu() {
+  zapis_Czarow_do_tablicy();
+  document.getElementById("main").innerHTML =
+    " Masz do dyspozycji: <br/><label id='kasa'><b<120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='' >Bron strzelecka</button><br/><br/><button onClick='' >Bron miotana</button><br/><br/><button onClick='' >Zbroje</button><br/><br/><button onClick='' >Tarcze</button>";
+  document.getElementById("Aside1").innerHTML = "";
+  document.getElementById("Aside2").innerHTML = "";
 }
