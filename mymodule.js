@@ -3370,9 +3370,6 @@ function czy_SF_wystarczy() {
 }
 
 function bron_WW() {
-  var aside2Element = document.getElementById("Aside2");
-  aside2Element.remove();
-
   fetch("bron_ww.html")
     .then((response) => response.text())
     .then((data) => {
@@ -3386,10 +3383,60 @@ function bron_WW() {
     });
 }
 
+function czy_SF_wystarczy_bron_strz() {
+  // Pobierz wartość minimalnej siły fizycznej postaci
+  var minimalnaSilaFizycznaPostaci = postac[4];
+
+  // Znajdź wszystkie wiersze z danymi broni
+  var wierszeBroni = document.querySelectorAll("table tbody tr");
+
+  // Iteruj przez każdy wiersz
+  for (var i = 0; i < wierszeBroni.length; i++) {
+    var wiersz = wierszeBroni[i];
+
+    // Pobierz wartość minimalnej siły fizycznej broni w danym wierszu
+    var minimalnaSilaFizycznaBroni = parseFloat(wiersz.cells[3].textContent);
+
+    // Pobierz wartość ceny broni w danym wierszu
+    var cenaBroni = parseFloat(wiersz.cells[2].textContent);
+
+    // Jeśli minimalna siła fizyczna broni jest większa niż minimalna siła fizyczna postaci
+    // lub cena broni jest większa od 120
+    if (
+      minimalnaSilaFizycznaBroni > minimalnaSilaFizycznaPostaci ||
+      cenaBroni > 120
+    ) {
+      // Przekreśl tekst w komórce z nazwą broni
+      wiersz.cells[0].style.textDecoration = "line-through";
+
+      // Wyłącz checkbox i select w komórce z oceną broni
+      var checkbox = wiersz.cells[9].querySelector("input[type='checkbox']");
+      var select = wiersz.cells[9].querySelector("select");
+      checkbox.disabled = true;
+      select.disabled = true;
+    }
+  }
+}
+
+function bron_strz() {
+  fetch("bron_strzelecka.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+
+      const bodyContent = htmlDocument.body.innerHTML;
+      document.getElementById("Aside1").innerHTML = bodyContent;
+
+      czy_SF_wystarczy_bron_strz();
+    });
+}
+
 function dalej_Do_sklepu() {
   zapis_Czarow_do_tablicy();
   document.getElementById("main").innerHTML =
-    " Masz do dyspozycji: <br/><label id='kasa'><b<120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='' >Bron strzelecka</button><br/><br/><button onClick='' >Bron miotana</button><br/><br/><button onClick='' >Zbroje</button><br/><br/><button onClick='' >Tarcze</button>";
+    " Masz do dyspozycji: <br/><label id='kasa'><b>120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='bron_strz()' >Bron strzelecka</button><br/><br/><button onClick='' >Bron miotana</button><br/><br/><button onClick='' >Zbroje</button><br/><br/><button onClick='' >Tarcze</button>";
   document.getElementById("Aside1").innerHTML = "";
-  document.getElementById("Aside2").innerHTML = "";
+  var aside2Element = document.getElementById("Aside2");
+  aside2Element.remove();
 }
