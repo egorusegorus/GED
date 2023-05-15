@@ -3398,7 +3398,7 @@ function czy_SF_wystarczy_bron_strz() {
     var minimalnaSilaFizycznaBroni = parseFloat(wiersz.cells[3].textContent);
 
     // Pobierz wartość ceny broni w danym wierszu
-    var cenaBroni = parseFloat(wiersz.cells[2].textContent);
+    var cenaBroni = parseFloat(wiersz.cells[1].textContent);
 
     // Jeśli minimalna siła fizyczna broni jest większa niż minimalna siła fizyczna postaci
     // lub cena broni jest większa od 120
@@ -3427,15 +3427,32 @@ function bron_strz() {
 
       const bodyContent = htmlDocument.body.innerHTML;
       document.getElementById("Aside1").innerHTML = bodyContent;
+      czy_SF_wystarczy_bron_strz();
+    });
+}
+
+function bron_miotana() {
+  fetch("bron_miotana.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+
+      const bodyContent = htmlDocument.body.innerHTML;
+      document.getElementById("Aside1").innerHTML = bodyContent;
 
       czy_SF_wystarczy_bron_strz();
     });
 }
 
+function tarcze() {
+  document.getElementById("main").innerHTML = postac[4];
+}
+
 function dalej_Do_sklepu() {
   zapis_Czarow_do_tablicy();
   document.getElementById("main").innerHTML =
-    " Masz do dyspozycji: <br/><label id='kasa'><b>120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='bron_strz()' >Bron strzelecka</button><br/><br/><button onClick='' >Bron miotana</button><br/><br/><button onClick='' >Zbroje</button><br/><br/><button onClick='' >Tarcze</button>";
+    " Masz do dyspozycji: <br/><label id='kasa'><b>120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='bron_strz()' >Bron strzelecka</button><br/><br/><button onClick='bron_miotana()' >Bron miotana</button><br/><br/><button onClick='' >Zbroje</button><br/><br/><button onClick='tarcze()' >Tarcze</button>";
   document.getElementById("Aside1").innerHTML = "";
   var aside2Element = document.getElementById("Aside2");
   aside2Element.remove();
