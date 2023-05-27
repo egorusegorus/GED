@@ -3445,15 +3445,77 @@ function bron_miotana() {
     });
 }
 
-function tarcze() {
-  document.getElementById("main").innerHTML = postac[4];
-}
-
 function dalej_Do_sklepu() {
   zapis_Czarow_do_tablicy();
   document.getElementById("main").innerHTML =
-    " Masz do dyspozycji: <br/><label id='kasa'><b>120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='bron_strz()' >Bron strzelecka</button><br/><br/><button onClick='bron_miotana()' >Bron miotana</button><br/><br/><button onClick='' >Zbroje</button><br/><br/><button onClick='tarcze()' >Tarcze</button>";
+    " Masz do dyspozycji: <br/><label id='kasa'><b>120</b></label> sztuk srebra.<br/><br/><button onClick='bron_WW()' >Bron biala</button><br/><br/><button onClick='bron_strz()' >Bron strzelecka</button><br/><br/><button onClick='bron_miotana()' >Bron miotana</button><br/><br/><button onClick='zbroje()' >Zbroje</button><br/><br/><button onClick='tarcze()' >Tarcze</button>";
   document.getElementById("Aside1").innerHTML = "";
   var aside2Element = document.getElementById("Aside2");
   aside2Element.remove();
+}
+function zbroje() {
+  fetch("zboje.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+
+      const bodyContent = htmlDocument.body.innerHTML;
+      document.getElementById("Aside1").innerHTML = bodyContent;
+
+      // Znajdź wszystkie wiersze z danymi broni
+      var wierszeBroni = document.querySelectorAll("table tbody tr");
+
+      // Iteruj przez każdy wiersz
+      for (var i = 0; i < wierszeBroni.length; i++) {
+        var wiersz = wierszeBroni[i];
+
+        var cenaBroni = parseFloat(wiersz.cells[1].textContent);
+
+        if (cenaBroni > 120) {
+          // Przekreśl tekst w komórce z nazwą broni
+          wiersz.cells[0].style.textDecoration = "line-through";
+
+          // Wyłącz checkbox i select w komórce z oceną broni
+          var checkbox = wiersz.cells[6].querySelector(
+            "input[type='checkbox']"
+          );
+
+          checkbox.disabled = true;
+        }
+      }
+    });
+}
+function tarcze() {
+  fetch("tarcze.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(data, "text/html");
+
+      const bodyContent = htmlDocument.body.innerHTML;
+      document.getElementById("Aside1").innerHTML = bodyContent;
+
+      // Znajdź wszystkie wiersze z danymi broni
+      var wierszeBroni = document.querySelectorAll("table tbody tr");
+
+      // Iteruj przez każdy wiersz
+      for (var i = 0; i < wierszeBroni.length; i++) {
+        var wiersz = wierszeBroni[i];
+
+        var cenaBroni = parseFloat(wiersz.cells[1].textContent);
+
+        if (cenaBroni > 120) {
+          // Przekreśl tekst w komórce z nazwą broni
+          wiersz.cells[0].style.textDecoration = "line-through";
+
+          // Wyłącz checkbox i select w komórce z oceną broni
+          var checkbox = wiersz.cells[7].querySelector(
+            "input[type='checkbox']"
+          );
+
+          checkbox.disabled = true;
+        }
+      }
+    });
 }
